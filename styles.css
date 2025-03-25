@@ -25,6 +25,7 @@ header .logo {
     display: flex;
     justify-content: flex-start; /* Align the logo to the left */
     align-items: center;
+    margin-left: 20px; /* Add left margin to match the contact button's right margin */
 }
 
 .logo {
@@ -72,6 +73,7 @@ header .contact-button {
     font-weight: 100; /* Reduce the font weight for the contact button to 100 */
     border-radius: 50px; /* Add more corner rounding to the contact button */
     cursor: pointer; /* Add pointer cursor for button */
+    margin-right: 20px; /* Add right margin to match the logo's left margin */
 }
 
 header .contact-button:hover {
@@ -156,11 +158,10 @@ ul li {
 main .illustration {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Align the illustration to the right */
-    align-items: flex-start; /* Align the illustration to the top */
-    padding: 20px; /* Add 20px padding */
-    padding-right: 30px; /* Remove existing right padding */
-    margin-right: 30px; /* Add margin to bring the illustration 30px to the left */
+    justify-content: center; /* Center the illustration horizontally */
+    align-items: center; /* Center the illustration vertically */
+    padding: 20px; /* Keep existing padding */
+    margin: 0; /* Remove any additional margins */
 }
 
 main .illustration img {
