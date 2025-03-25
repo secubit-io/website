@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 20px;
+    background-color: #121212; /* Match the header background color with the hero section */
+}
+
+header .logo {
+    display: flex;
+    justify-content: flex-start; /* Align the logo to the left */
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo img {
+    width: 200px; /* Reduce the logo size to make it smaller */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.logo span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.contact-button {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.2rem;
+}
+
+.contact-button:hover {
+    background-color: #2563eb;
+}
+
+header .contact-button {
+    color: #ffffff; /* Set text color to white */
+    text-decoration: none; /* Remove underline */
+    background-color: #81BFF8; /* Update blue color */
+    border: none; /* Remove border */
+    padding: 6px 26px; /* Halve the vertical padding to reduce the button's height */
+    font-size: 24px; /* Match the font size of the links */
+    font-family: 'Roboto', sans-serif; /* Match the font family of the links */
+    font-weight: 100; /* Reduce the font weight for the contact button to 100 */
+    border-radius: 50px; /* Add more corner rounding to the contact button */
+    cursor: pointer; /* Add pointer cursor for button */
+}
+
+header .contact-button:hover {
+    background-color: #389DFB; /* Update hover color to the specified blue */
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding: 0px;
+}
+
+main .text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align the text section to the bottom */
+    align-items: flex-start; /* Align the content to the left */
+    text-align: left-bottom;
+    padding-left: 30px;
+    padding-bottom: 20px; /* Add 30px padding from the left to all text */
+    height: 100%; /* Ensure the text section spans the full height of the page */
+    padding-bottom: 0px; /* Add padding to bring the title and bullet points down */
+}
+
+main h1 {
+    text-align: left-bottom; /* Align the title to the left */
+    margin-left: 20px; /* Ensure the title starts from the left */
+    font-size: 64px; /* Set the title font size to 64 */
+    margin-bottom: 10px;
+    max-width: 100%; /* Increase the title's width to make the border bigger */
+    font-family: 'Tilt Warp', cursive; /* Apply Tilt Warp typography to the title */
+    font-weight: 300; /* Use a less bold weight for the title */
+}
+
+main h1 span {
+    color: #81BFF8; /* Update blue color */
+}
+
+main ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    line-height: 30px;
+}
+
+ul li {
+    padding-left: 0px; /* Remove padding around the bullet text */
+    text-indent: 0px; /* Reset text indentation */
+    font-family: 'Roboto Mono', monospace; /* Apply Roboto Mono typography to the bullet text */
+    font-size: 22px; /* Set the font size to 20 */
+    font-weight: 500; /* Use medium weight */
+    margin-bottom: 15px; /* Add margin from the bottom to the bullets */
+    margin-left: 50px;
+}
+
+.links {
+    margin-left: 20px;
+    align-self: flex-start; /* Align the links to the left */
+    padding-bottom: 20px; /* Add 20px padding from the bottom */
+}
+
+.links .link {
+    color: #81BFF8; /* Update blue color */
+    text-decoration: underline; /* Add underline to the links */
+    text-underline-offset: 4px; /* Add more space between the links and the underline */
+    margin: 0 20px; /* Increase horizontal spacing between the links */
+    font-size: 24px; /* Set the font size to 24 */
+    font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
+    font-weight: 600; /* Use semibold weight */
+}
+
+.links .link:hover {
+    text-decoration: underline;
+    color: #389DFB; /* Update hover color for links to the specified blue */
+}
+
+main .illustration {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Align the illustration to the right */
+    align-items: flex-start; /* Align the illustration to the top */
+    padding: 20px; /* Add 20px padding */
+    padding-right: 30px; /* Remove existing right padding */
+    margin-right: 30px; /* Add margin to bring the illustration 30px to the left */
+}
+
+main .illustration img {
+    max-width: 100%;
+    height: auto;
+}
