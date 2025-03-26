@@ -95,7 +95,7 @@ main .text-content {
     flex-direction: column;
     justify-content: flex-end; /* Align the text section to the bottom */
     align-items: flex-start; /* Align the content to the left */
-    text-align: left-bottom;
+    text-align: left; /* Align all text to the left */
     padding-left: 30px;
     padding-bottom: 20px; /* Add 30px padding from the left to all text */
     height: 100%; /* Ensure the text section spans the full height of the page */
@@ -167,4 +167,19 @@ main .illustration {
 main .illustration img {
     max-width: 100%;
     height: auto;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* Stack the text and illustration vertically */
+        align-items: center; /* Center align the content */
+    }
+
+    main .text-content {
+        text-align: left; /* Ensure text remains left-aligned on smaller screens */
+    }
+
+    main .illustration {
+        margin: 20px 0; /* Add vertical margin for spacing */
+    }
 }
