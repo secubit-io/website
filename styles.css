@@ -11,12 +11,14 @@ body {
     background-color: #121212;
     color: #ffffff;
     height: 100vh;
+    font-weight: 400; /* Set the font weight to 400 */
 }
 
 header {
+    margin-top: 20px; /* Add margin from the top for the header */
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: center
     padding: 20px;
     background-color: #121212; /* Match the header background color with the hero section */
 }
@@ -35,7 +37,8 @@ header .logo {
 
 .logo img {
     height: 40px;
-    margin-right: 10px;
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
 header .logo img {
@@ -70,10 +73,10 @@ header .contact-button {
     padding: 6px 26px; /* Halve the vertical padding to reduce the button's height */
     font-size: 24px; /* Match the font size of the links */
     font-family: 'Roboto', sans-serif; /* Match the font family of the links */
-    font-weight: 100; /* Reduce the font weight for the contact button to 100 */
-    border-radius: 50px; /* Add more corner rounding to the contact button */
+    font-weight:  /* Reduce the font weight for the contact button to 100 */
     cursor: pointer; /* Add pointer cursor for button */
-    margin-right: 20px; /* Add right margin to match the logo's left margin */
+    margin-right: 20px; /* Add 20px margin from the right to the contact button */
+    border-radius: 50px; /* Set the border radius for the contact button to 50px */
 }
 
 header .contact-button:hover {
@@ -105,6 +108,7 @@ main .text-content {
 main h1 {
     text-align: left-bottom; /* Align the title to the left */
     margin-left: 20px; /* Ensure the title starts from the left */
+    margin-right: 20px;
     font-size: 64px; /* Set the title font size to 64 */
     margin-bottom: 10px;
     max-width: 100%; /* Increase the title's width to make the border bigger */
@@ -131,11 +135,13 @@ ul li {
     font-size: 22px; /* Set the font size to 20 */
     font-weight: 500; /* Use medium weight */
     margin-bottom: 15px; /* Add margin from the bottom to the bullets */
-    margin-left: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .links {
     margin-left: 20px;
+    margin-bottom: 20px;
     align-self: flex-start; /* Align the links to the left */
     padding-bottom: 20px; /* Add 20px padding from the bottom */
 }
@@ -144,7 +150,7 @@ ul li {
     color: #81BFF8; /* Update blue color */
     text-decoration: underline; /* Add underline to the links */
     text-underline-offset: 4px; /* Add more space between the links and the underline */
-    margin: 0 20px; /* Increase horizontal spacing between the links */
+    margin: 20px; /* Increase horizontal spacing between the links */
     font-size: 24px; /* Set the font size to 24 */
     font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
     font-weight: 600; /* Use semibold weight */
@@ -160,7 +166,7 @@ main .illustration {
     display: flex;
     justify-content: center; /* Center the illustration horizontally */
     align-items: center; /* Center the illustration vertically */
-    padding: 20px; /* Keep existing padding */
+    padding: 24px; /* Keep existing padding */
     margin: 0; /* Remove any additional margins */
 }
 
