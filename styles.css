@@ -30,53 +30,40 @@ header .logo {
     margin-left: 20px; /* Add left margin to match the contact button's right margin */
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
 .logo img {
-    height: 40px;
+    height: 80px;
     margin-right: 8px;
     margin-left: 8px;
 }
 
 header .logo img {
     width: 200px; /* Reduce the logo size to make it smaller */
-    height: auto; /* Maintain aspect ratio */
 }
 
 .logo span {
-    font-size: 1.2rem;
+    font-size: 24px
     font-weight: bold;
 }
 
-.contact-button {
-    background-color: #3b82f6;
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.2rem;
-}
-
 .contact-button:hover {
-    background-color: #2563eb;
+    background-color: #2462e6;
 }
 
 header .contact-button {
     color: #ffffff; /* Set text color to white */
     text-decoration: none; /* Remove underline */
-    background-color: #81BFF8; /* Update blue color */
+    background-color: #4285F4; /* Update to Google's blue color */
     border: none; /* Remove border */
-    padding: 6px 26px; /* Halve the vertical padding to reduce the button's height */
-    font-size: 24px; /* Match the font size of the links */
+    padding: 8px 26px; /* Update padding to 26px width and 12px length */
+    font-size: 18px; /* Match the font size of the links */
     font-family: 'Roboto', sans-serif; /* Match the font family of the links */
     font-weight:  /* Reduce the font weight for the contact button to 100 */
     cursor: pointer; /* Add pointer cursor for button */
     margin-right: 20px; /* Add 20px margin from the right to the contact button */
+    margin-top: 20px; /* Add 20px margin from the top to the contact button */
     border-radius: 50px; /* Set the border radius for the contact button to 50px */
+    letter-spacing: 1.5px; /* Add more letter spacing to the contact button */
+    height: 50px; /* Set the height of the contact button to 50px */
 }
 
 header .contact-button:hover {
@@ -117,7 +104,7 @@ main h1 {
 }
 
 main h1 span {
-    color: #81BFF8; /* Update blue color */
+    color: #4285F4; /* Update the title's blue color to Google's blue */
 }
 
 main ul {
@@ -147,7 +134,7 @@ ul li {
 }
 
 .links .link {
-    color: #81BFF8; /* Update blue color */
+    color: #4285F4; /* Update links color to Google's blue */
     text-decoration: underline; /* Add underline to the links */
     text-underline-offset: 4px; /* Add more space between the links and the underline */
     margin: 20px; /* Increase horizontal spacing between the links */
@@ -166,8 +153,9 @@ main .illustration {
     display: flex;
     justify-content: center; /* Center the illustration horizontally */
     align-items: center; /* Center the illustration vertically */
-    padding: 24px; /* Keep existing padding */
+    padding: 0px; /* Keep existing padding */
     margin: 0; /* Remove any additional margins */
+    margin-left: 20px; /* Move the illustration slightly to the right */
 }
 
 main .illustration img {
@@ -175,7 +163,7 @@ main .illustration img {
     height: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     main {
         flex-direction: column; /* Stack the text and illustration vertically */
         align-items: center; /* Center align the content */
@@ -186,6 +174,6 @@ main .illustration img {
     }
 
     main .illustration {
-        margin: 20px 0; /* Add vertical margin for spacing */
+        margin: 15px 0; /* Add vertical margin for spacing */
     }
 }
