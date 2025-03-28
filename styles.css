@@ -129,7 +129,7 @@ ul li {
 
 .links {
     align-self: flex-start; /* Align the links to the text from the left */
-    padding-bottom: 50px; /* Add 20px padding from the bottom */
+    padding-bottom: 60px; /* Add 20px padding from the bottom */
 }
 
 .links .link {
