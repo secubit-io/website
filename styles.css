@@ -128,9 +128,7 @@ ul li {
 }
 
 .links {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    align-self: flex-start; /* Align the links to the left */
+    align-self: flex-start; /* Align the links to the text from the left */
     padding-bottom: 20px; /* Add 20px padding from the bottom */
 }
 
@@ -138,8 +136,9 @@ ul li {
     color: #4285F4; /* Update links color to Google's blue */
     text-decoration: underline; /* Add underline to the links */
     text-underline-offset: 4px; /* Add more space between the links and the underline */
-    margin-right: 20px; /* Increase horizontal spacing between the links */
-    margin-bottom: 20px;
+    margin-right: 4px; /* Increase horizontal spacing between the links */
+    margin-bottom: 18px;
+    margin-left: 20px;
     font-size: 24px; /* Set the font size to 24 */
     font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
     font-weight: 600; /* Use semibold weight */
