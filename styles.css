@@ -59,8 +59,8 @@ header .contact-button {
     font-family: 'Roboto', sans-serif; /* Match the font family of the links */
     font-weight:  /* Reduce the font weight for the contact button to 100 */
     cursor: pointer; /* Add pointer cursor for button */
-    margin-right: 20px; /* Add 20px margin from the right to the contact button */
-    margin-top: 20px; /* Add 20px margin from the top to the contact button */
+    margin-right: 50px; /* Add 20px margin from the right to the contact button */
+    margin-top: 12px; /* Add 20px margin from the top to the contact button */
     border-radius: 50px; /* Set the border radius for the contact button to 50px */
     letter-spacing: 1.5px; /* Add more letter spacing to the contact button */
     height: 50px; /* Set the height of the contact button to 50px */
@@ -141,6 +141,10 @@ ul li {
     font-size: 24px; /* Set the font size to 24 */
     font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
     font-weight: 600; /* Use semibold weight */
+}
+
+.links .link[href*="Docs"] {
+    content: url('https://github.com/secubit-io'); /* Connect the Docs link to the specified URL */
 }
 
 .links .link:hover {
