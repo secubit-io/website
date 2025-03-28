@@ -138,11 +138,12 @@ ul li {
     color: #4285F4; /* Update links color to Google's blue */
     text-decoration: underline; /* Add underline to the links */
     text-underline-offset: 4px; /* Add more space between the links and the underline */
-    margin: 20px; /* Increase horizontal spacing between the links */
+    margin-right: 20px; /* Increase horizontal spacing between the links */
+    margin-bottom: 20px;
     font-size: 24px; /* Set the font size to 24 */
     font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
     font-weight: 600; /* Use semibold weight */
-}
+    }
 
 .links .link[href*="Docs"] {
     content: url('https://github.com/secubit-io'); /* Connect the Docs link to the specified URL */
