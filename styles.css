@@ -27,7 +27,7 @@ header .logo {
     display: flex;
     justify-content: flex-start; /* Align the logo to the left */
     align-items: center;
-    margin-left: 20px; /* Add left margin to match the contact button's right margin */
+    margin-left: 15px; /* Add left margin to match the contact button's right margin */
 }
 
 .logo img {
@@ -95,7 +95,7 @@ main .text-content {
 
 main h1 {
     text-align: left-bottom; /* Align the title to the left */
-    margin-left: 20px; /* Ensure the title starts from the left */
+    margin-left: 10px; /* Ensure the title starts from the left */
     margin-right: 20px;
     font-size: 64px; /* Set the title font size to 64 */
     margin-bottom: 10px;
@@ -123,22 +123,21 @@ ul li {
     font-size: 22px; /* Set the font size to 20 */
     font-weight: 500; /* Use medium weight */
     margin-bottom: 15px; /* Add margin from the bottom to the bullets */
-    margin-left: 20px;
+    margin-left: 10px;
     margin-right: 20px;
 }
 
 .links {
     align-self: flex-start; /* Align the links to the text from the left */
-    padding-bottom: 20px; /* Add 20px padding from the bottom */
+    padding-bottom: 50px; /* Add 20px padding from the bottom */
 }
 
 .links .link {
     color: #4285F4; /* Update links color to Google's blue */
     text-decoration: underline; /* Add underline to the links */
     text-underline-offset: 4px; /* Add more space between the links and the underline */
-    margin-right: 4px; /* Increase horizontal spacing between the links */
-    margin-bottom: 18px;
-    margin-left: 20px;
+    margin-right: 20px; /* Increase horizontal spacing between the links */
+    margin-left: 10px;
     font-size: 24px; /* Set the font size to 24 */
     font-family: 'Roboto', sans-serif; /* Apply Roboto typography to the links */
     font-weight: 600; /* Use semibold weight */
