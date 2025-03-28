@@ -64,6 +64,7 @@ header .contact-button {
     border-radius: 50px; /* Set the border radius for the contact button to 50px */
     letter-spacing: 1.5px; /* Add more letter spacing to the contact button */
     height: 50px; /* Set the height of the contact button to 50px */
+    text-transform: uppercase; /* Make the contact button text all uppercase */
 }
 
 header .contact-button:hover {
