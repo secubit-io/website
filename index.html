@@ -2,50 +2,433 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secubit.io</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo_favicon.png" type="image/png">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JSTEX4DT3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-0JSTEX4DT3');
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secubit — Self-Sovereign WaaS</title>
+  <link rel="icon" href="logo_favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.svg" alt="Secubit.io Logo">
+  <div id="page">
+
+    <!-- ── Nav ── -->
+    <nav id="nav">
+      <img src="logo.svg" alt="Secubit" class="nav-logo">
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#api">API</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+        <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
+        <a href="#cta" class="btn">Join Waitlist</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section id="hero">
+      <div class="hero-glow-l"></div>
+      <div class="hero-glow-r"></div>
+      <div class="section-inner hero-inner">
+
+        <div class="reveal hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            WaaS INFRASTRUCTURE
+          </div>
+          <h1>Wallet Service<br>with<br><span class="grad">Bank-Grade<br>Security</span></h1>
+          <p>Institutional crypto custody infrastructure powered by HSM, distributed MPC, and PassKey authentication.
+            Deploy in custodial or non-custodial mode.</p>
+
+          <div class="hero-pills">
+            <span class="pill">HSM FIPS 140-3</span>
+            <span class="pill">Distributed MPC</span>
+            <span class="pill">PassKey / Biometric</span>
+            <span class="pill">Policy Engine</span>
+          </div>
+
+          <div class="waitlist-form" id="hero-form">
+            <input type="email" id="hero-email" placeholder="your@company.com">
+            <button class="btn" onclick="submitWaitlist('hero')">Join Waitlist →</button>
+          </div>
+          <div class="waitlist-success" id="hero-success">✓ Your mail app should open — send the email to complete your
+            registration.</div>
+
+
         </div>
-        <button class="contact-button" onclick="location.href='mailto:moreinfo@secubit.io';">Contact</button>
-    </header>
-    <main>
-        <div class="text-content">
-            <h1>Self-Sovereign WaaS with <span>Bank-Grade Security</span></h1>
-            <ul>
-                <li>• Self-Sovereign Secure Key and Policy Management</li>
-                <li>• Custodial and Non-Custodial Modes</li>
-                <li>• Hardware Security Module (HSM) with FIPS 140-3</li>
-                <li>• Combined with Distributed MPC Wallets</li>
-            </ul>
-            <div class="links">
-                <a href="https://whitepaper.secubit.io/" class="link" target="_blank">Whitepaper</a>
-                <a href="https://api.secubit.io/docs/" class="link" target="_blank">API</a>
-                <a href="https://wallet.secubit.io/" class="link" target="_blank">Wallet</a>
-                <a href="https://medium.com/@hossein.rz" class="link" target="_blank">Blog</a>
-                <a href="#" class="link">Slack</a>
+
+        <!-- Security Animation -->
+        <div class="anim-wrap reveal reveal-delay-3">
+          <object type="image/svg+xml" data="hero-animation.svg"></object>
+        </div>
+    </section>
+    <section id="features">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div class="label">Capabilities</div>
+          <h2>Everything you need for<br><span>institutional custody</span></h2>
+        </div>
+        <div class="features-grid reveal">
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">⬡</span><span class="feat-tag">Compliance</span></div>
+            <h3>HSM FIPS 140-3</h3>
+            <p>Hardware Security Modules certified to the highest federal standard. Private keys never leave the secure
+              enclave.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">◈</span><span class="feat-tag">Security</span></div>
+            <h3>Distributed MPC</h3>
+            <p>Multi-Party Computation splits the key into shares — one secured in the HSM, one accessible to the user.
+              No single party ever holds a complete key.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">◉</span><span class="feat-tag">Auth</span></div>
+            <h3>PassKey & Biometric</h3>
+            <p>FIDO2/WebAuthn standard replaces passwords. PassKey is used for transaction authorization and MPC key
+              encryption — bound to biometric verification.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">▤</span><span class="feat-tag">Control</span></div>
+            <h3>Policy Engine</h3>
+            <p>Define transaction rules, spending limits, whitelists, and multi-sig approval workflows at the wallet
+              level in HSM.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">⊕</span><span class="feat-tag">Flexibility</span></div>
+            <h3>Custodial & Non-Custodial</h3>
+            <p>Deploy in fully-managed custodial mode or retain key sovereignty with non-custodial infrastructure under
+              your control.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-top"><span class="feat-icon">⌘</span><span class="feat-tag">Integration</span></div>
+            <h3>API-First</h3>
+            <p>Simple RESTful API with SDK and comprehensive documentation. Integrate in hours, not months.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Architecture ── -->
+    <section id="architecture">
+      <div class="section-inner">
+        <div class="arch-head reveal">
+          <div>
+            <div class="label">Architecture</div>
+            <h2 class="arch-title">How it works</h2>
+          </div>
+          <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="non-custodial"
+              onclick="setMode('non-custodial')">Non-Custodial</button>
+            <button class="mode-btn" data-mode="custodial" onclick="setMode('custodial')">Custodial</button>
+          </div>
+        </div>
+
+        <div class="flow reveal" id="flow-steps"></div>
+
+        <div class="arch-callout reveal" id="arch-callout"></div>
+
+        <div class="reveal whitepaper-wrap">
+          <a href="https://whitepaper.secubit.io/" target="_blank" class="whitepaper-link">
+            <span class="whitepaper-link-icon">
+              <img src="whitepaper-icon.svg" width="18" height="18" alt="">
+            </span>
+            <span>
+              <span class="whitepaper-link-title">Secubit Whitepaper</span>
+              <span class="whitepaper-link-sub">Read the full architecture →</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── API / Developer ── -->
+    <section id="api">
+      <div class="api-inner">
+        <div class="reveal">
+          <div class="label">Developers</div>
+          <h2 class="api-title">Integrate in<br><span>minutes</span></h2>
+          <p class="api-lead">RESTful API with comprehensive docs, client SDKs, and webhook support. Built for
+            engineers who need reliability at scale.</p>
+          <div class="doc-links">
+            <a href="https://api.secubit.io/docs/" target="_blank" class="doc-link"><span>API Playground <span
+                  class="doc-badge">Mainnet</span></span><i class="doc-arrow">→</i></a>
+            <a href="https://testnet.api.secubit.io/docs/" target="_blank" class="doc-link"><span>API Playground <span
+                  class="doc-badge doc-badge--cyan">Testnet</span></span><i class="doc-arrow doc-arrow--cyan">→</i></a>
+            <a href="https://wallet.secubit.io/" target="_blank" class="doc-link"><span>Wallet Demo</span><i
+                class="doc-arrow">→</i></a>
+          </div>
+        </div>
+        <div class="codebox reveal reveal-delay-2">
+          <div class="codebox-bar">
+            <div class="cb-dot cb-dot--red"></div>
+            <div class="cb-dot cb-dot--yellow"></div>
+            <div class="cb-dot cb-dot--green"></div>
+            <span>secubit.js</span>
+          </div>
+          <pre><span class="c-comment">// Initialize Secubit WaaS client</span>
+<span class="c-kw">const</span> client = <span class="c-kw">new</span> Secubit({
+  apiKey: process.env.SECUBIT_API_KEY,
+  mode: <span class="c-str">'non-custodial'</span>,
+});
+
+<span class="c-comment">// Create a new MPC wallet</span>
+<span class="c-kw">const</span> wallet = <span class="c-kw">await</span> client.wallets.create({
+  name: <span class="c-str">'Treasury Wallet'</span>,
+  threshold: { required: 2, total: 3 },
+  policies: { maxTxAmount: <span class="c-str">'100000'</span> },
+});
+
+<span class="c-comment">// Sign (biometric-gated)</span>
+<span class="c-kw">const</span> tx = <span class="c-kw">await</span> wallet.sign({
+  to: <span class="c-str">'0xabc...'</span>, value: <span class="c-str">'1.5 ETH'</span>,
+  auth: { type: <span class="c-str">'passkey'</span> },
+});</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Blog ── -->
+    <section id="blog">
+      <div class="section-inner">
+        <div class="blog-head reveal">
+          <div>
+            <div class="label">Blog</div>
+            <h2 class="blog-title">Latest insights</h2>
+          </div>
+          <a href="https://medium.com/@hossein.rz" target="_blank">View all on Medium →</a>
+        </div>
+        <div class="blog-grid">
+          <a href="https://medium.com/@hossein.rz/is-the-new-trezor-safe-5-more-secure-than-previous-trezor-models-7308943f7bed"
+            target="_blank" class="blog-card reveal">
+            <div class="blog-meta"><span class="blog-tag">Security</span><span class="blog-date">Jun 2024</span></div>
+            <h3>Is the New Trezor Safe 5 More Secure Than Previous Trezor Models?</h3>
+          </a>
+          <a href="https://medium.com/@hossein.rz/beyond-hot-and-cold-redefining-crypto-custody-with-hardware-security-module-hsm-13846710aa26"
+            target="_blank" class="blog-card reveal reveal-delay-1">
+            <div class="blog-meta"><span class="blog-tag">Architecture</span><span class="blog-date">Apr 2024</span>
             </div>
+            <h3>Beyond Hot and Cold: Redefining Crypto Custody with Hardware Security Module (HSM)</h3>
+          </a>
+          <a href="https://medium.com/@hossein.rz/self-custody-the-good-the-bad-the-ugly-ac62c7593cc7" target="_blank"
+            class="blog-card reveal reveal-delay-2">
+            <div class="blog-meta"><span class="blog-tag">Compliance</span><span class="blog-date">Mar 2024</span></div>
+            <h3>Self-Custody; The Good, The Bad and The Ugly</h3>
+          </a>
         </div>
-        <div class="illustration">
-            <img src="illustration.svg" alt="Security Illustration">
+      </div>
+    </section>
+
+    <!-- ── About ── -->
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-text reveal">
+          <div class="label">About</div>
+          <h2>Built for institutions<br>who can't afford<br><span>to compromise</span></h2>
+          <p>Secubit is a self-sovereign Wallet-as-a-Service platform combining the highest grade hardware security with
+            modern cryptographic protocols.</p>
+          <p>We believe every institution deserves the ability to hold digital assets with full key sovereignty —
+            without the operational complexity of building crypto infrastructure from scratch.</p>
         </div>
-    </main>
+        <div class="stats-grid reveal reveal-delay-2">
+          <div class="stat-card">
+            <div class="stat-val stat-val--blue">FIPS 140-3</div>
+            <div class="stat-label">HSM Certification</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val stat-val--cyan">M-of-N</div>
+            <div class="stat-label">Multi-User Quorum Approval</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val stat-val--blue">EVM+</div>
+            <div class="stat-label">Chain Support</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val stat-val--cyan">API-First</div>
+            <div class="stat-label">Integration Model</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section id="cta">
+      <div class="cta-inner reveal">
+        <div class="label label--cyan">Get Early Access</div>
+        <h2>Ready to secure<br>your assets?</h2>
+        <p>Join the waitlist for early access to Secubit's institutional WaaS platform. Or reach us at <a
+            href="mailto:info@secubit.io">info@secubit.io</a>.</p>
+        <div class="waitlist-form" id="cta-form">
+          <input type="email" id="cta-email" placeholder="your@company.com">
+          <button class="btn" onclick="submitWaitlist('cta')">Join Waitlist →</button>
+        </div>
+        <div class="waitlist-success" id="cta-success">✓ Your mail app should open — send the email to complete your
+          registration.</div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <div>
+        <img src="logo.svg" alt="Secubit">
+        <div class="footer-copy">Self-Sovereign WaaS &copy; 2025 Secubit.io</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
+        <a href="https://api.secubit.io/docs/" target="_blank">API</a>
+        <a href="https://wallet.secubit.io/" target="_blank">Wallet</a>
+        <a href="https://medium.com/@hossein.rz" target="_blank">Blog</a>
+        <a href="mailto:info@secubit.io">Contact</a>
+      </div>
+    </footer>
+
+    <!-- ── Tweaks Panel ── -->
+    <div id="tweaks-panel">
+      <div class="tweaks-head">
+        <span>Tweaks</span>
+        <button class="tweaks-close" onclick="closeTweaks()">✕</button>
+      </div>
+      <div class="tweak-row">
+        <div class="tweak-label">Accent Color</div>
+        <div class="color-swatches">
+          <div class="swatch active" style="background:#4285F4" data-color="#4285F4" onclick="setAccent(this)"></div>
+          <div class="swatch" style="background:#7c3aed" data-color="#7c3aed" onclick="setAccent(this)"></div>
+          <div class="swatch" style="background:#e11d48" data-color="#e11d48" onclick="setAccent(this)"></div>
+          <div class="swatch" style="background:#059669" data-color="#059669" onclick="setAccent(this)"></div>
+        </div>
+      </div>
+      <div class="tweak-row">
+        <div class="tweak-label" id="speed-label">Animation Speed: 1×</div>
+        <input type="range" min="0.3" max="3" step="0.1" value="1" oninput="setSpeed(this)">
+      </div>
+    </div>
+
+  </div><!-- /#page -->
+
+  <script>
+    /* ── Nav scroll ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ── Scroll reveal ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => obs.observe(el));
+
+    /* ── Architecture toggle ── */
+    const MODES = {
+      'non-custodial': {
+        steps: [
+          { label: 'Client App', sub: 'SDK / API', color: '#4285F4' },
+          { label: 'Your HSM', sub: 'Self-Hosted', color: '#00d4ff' },
+          { label: 'MPC Nodes', sub: 'Your Infrastructure', color: '#4285F4' },
+          { label: 'Secubit API', sub: 'Coordination Only', color: '#4285F4' },
+          { label: 'Blockchain', sub: 'Broadcast', color: '#6b7894' },
+        ],
+        callout: {
+          icon: '🔑', color: '#00d4ff',
+          title: 'Full Key Sovereignty',
+          body: 'In non-custodial mode, your keys are generated and stored in hardware you own. Secubit only provides coordination APIs — we never have access to your private keys or partial shares.',
+        }
+      },
+      'custodial': {
+        steps: [
+          { label: 'Client App', sub: 'SDK / API', color: '#4285F4' },
+          { label: 'Secubit API', sub: 'Policy Engine', color: '#4285F4' },
+          { label: 'HSM Cluster', sub: 'FIPS 140-3', color: '#00d4ff' },
+          { label: 'MPC Nodes', sub: 'M-of-N Quorum', color: '#4285F4' },
+          { label: 'Blockchain', sub: 'Broadcast', color: '#6b7894' },
+        ],
+        callout: {
+          icon: '☁️', color: '#4285F4',
+          title: 'Fully Managed Custody',
+          body: "In custodial mode, Secubit manages HSM and MPC infrastructure on your behalf. Ideal for rapid deployment with Secubit's enterprise SLA and compliance guarantees.",
+        }
+      }
+    };
+
+    function setMode(mode) {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+      const { steps, callout } = MODES[mode];
+      const flow = document.getElementById('flow-steps');
+      flow.innerHTML = steps.map((s, i) => `
+    <div class="flow-step" style="border-top-color:${s.color}">
+      <div class="flow-step-num">STEP ${i + 1}</div>
+      <div class="flow-step-title">${s.label}</div>
+      <div class="flow-step-sub" style="color:${s.color}">${s.sub}</div>
+    </div>
+    ${i < steps.length - 1 ? '<div class="flow-arrow">→</div>' : ''}
+  `).join('');
+      const c = document.getElementById('arch-callout');
+      c.style.background = `rgba(${mode === 'non-custodial' ? '0,212,255' : '66,133,244'},.05)`;
+      c.style.border = `1px solid ${callout.color}22`;
+      c.innerHTML = `
+    <span style="font-size:20px">${callout.icon}</span>
+    <div><strong>${callout.title}</strong><p>${callout.body}</p></div>
+  `;
+    }
+    setMode('non-custodial');
+
+    /* ── Waitlist ── */
+    function submitWaitlist(id) {
+      const emailInput = document.getElementById(id + '-email');
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) return;
+
+      const subject = encodeURIComponent('Waitlist Request — Secubit WaaS');
+      const body = encodeURIComponent(`Hi,\n\nPlease add me to the Secubit waitlist.\n\nEmail: ${email}`);
+      window.location.href = `mailto:info@secubit.io?subject=${subject}&body=${body}`;
+
+      document.getElementById(id + '-form').style.display = 'none';
+      document.getElementById(id + '-success').style.display = 'block';
+    }
+
+    /* ── Tweaks ── */
+    window.addEventListener('message', e => {
+      if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('open');
+      if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('open');
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+    function closeTweaks() { document.getElementById('tweaks-panel').classList.remove('open'); }
+
+    function setAccent(el) {
+      const color = el.dataset.color;
+      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      el.classList.add('active');
+      document.documentElement.style.setProperty('--blue', color);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentBlue: color } }, '*');
+    }
+
+    function setSpeed(input) {
+      const v = parseFloat(input.value);
+      document.getElementById('speed-label').textContent = `Animation Speed: ${v}×`;
+      const dur = s => `${s / v}s`;
+      // Update CSS animation durations dynamically
+      const styleTag = document.getElementById('anim-speed-style') || (() => {
+        const s = document.createElement('style'); s.id = 'anim-speed-style'; document.head.appendChild(s); return s;
+      })();
+      styleTag.textContent = `
+    .anim-wrap { animation-duration: ${dur(6)} !important; }
+    .pkt1,.pkt2,.pkt3,.pkt4 { animation-duration: ${dur(2)} !important; }
+    .fp1,.fp2,.fp3,.fp4,.fp5 { animation-duration: ${dur(2)} !important; }
+    .pr1,.pr2,.pr3 { animation-duration: ${dur(2.4)} !important; }
+    .ring-spin { animation-duration: ${dur(40)} !important; }
+    .secured-dot { animation-duration: ${dur(1.5)} !important; }
+    .hero-badge-dot { animation-duration: ${dur(1.6)} !important; }
+    .hsm-hex { animation-duration: ${dur(3)} !important; }
+  `;
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { animSpeed: v } }, '*');
+    }
+  </script>
 </body>
 
 </html>
