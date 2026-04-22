@@ -11,6 +11,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 </head>
 
 <body>
@@ -172,27 +173,7 @@
             <div class="cb-dot cb-dot--green"></div>
             <span>secubit.js</span>
           </div>
-          <pre><span class="c-comment">// Get user's approval for transaction</span>
-<span class="c-kw">const</span> approvalResult = <span class="c-kw">await</span> approver.approveSend(
-    from, to, amount, coin, feeTier, network, userPubkey
-);
-
-<span class="c-comment">// Sign transaction in HSM and broadcast it</span>
-<span class="c-kw">const</span> resp = <span class="c-kw">await</span> fetch(
-    <span class="c-str">`/wallets/${walletId}/${network}/transactions`</span>, {
-    method: <span class="c-str">'POST'</span>,
-    headers: {
-        <span class="c-str">'Content-Type'</span>: <span class="c-str">'application/json'</span>,
-        <span class="c-str">'X-API-Key'</span>: apiKey
-    },
-    body: JSON.stringify({
-        approval_data: approvalResult.approvalData,
-        approvals: [approvalResult.approval]
-    }),
-});
-
-<span class="c-comment">// Get transaction id</span>
-<span class="c-kw">const</span> { tx_hash } = <span class="c-kw">await</span> resp.json();</pre>
+          <pre id="codebox-pre"></pre>
         </div>
       </div>
     </section>
@@ -315,6 +296,14 @@
   </div><!-- /#page -->
 
   <script>
+    /* ── Codebox loader ── */
+    fetch('codebox.js')
+      .then(r => r.text())
+      .then(code => {
+        const highlighted = Prism.highlight(code, Prism.languages.javascript, 'javascript');
+        document.getElementById('codebox-pre').innerHTML = highlighted;
+      });
+
     /* ── Nav scroll ── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -434,6 +423,8 @@
       window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { animSpeed: v } }, '*');
     }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </body>
 
 </html>
