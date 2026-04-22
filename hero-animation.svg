@@ -1,0 +1,157 @@
+<svg viewBox="0 0 560 545" xmlns="http://www.w3.org/2000/svg" width="100%" style="overflow:visible;">
+  <defs>
+    <radialGradient id="hsmGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4285F4" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#4285F4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shareGradL" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4285F4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#4285F4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shareGradR" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="gb">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gc">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes blink      { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes pulse-ring { 0%{transform:scale(1);opacity:.55} 100%{transform:scale(1.8);opacity:0} }
+    @keyframes glow-pulse { 0%,100%{filter:drop-shadow(0 0 8px rgba(66,133,244,.6))} 50%{filter:drop-shadow(0 0 22px rgba(66,133,244,1))} }
+    @keyframes spin-slow  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes packet     { 0%{stroke-dashoffset:200;opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{stroke-dashoffset:0;opacity:0} }
+
+    .hsm-hex     { animation: glow-pulse 3s ease-in-out infinite; }
+    .ring-spin   { transform-origin:260px 260px; animation: spin-slow 40s linear infinite; }
+    .pr1         { transform-origin:280px 270px; animation: pulse-ring 2.4s ease-out 0s infinite; }
+    .pr2         { transform-origin:280px 270px; animation: pulse-ring 2.4s ease-out .8s infinite; }
+    .pr3         { transform-origin:280px 270px; animation: pulse-ring 2.4s ease-out 1.6s infinite; }
+    .pkt1        { animation: packet 2s ease-in-out 0s infinite; }
+    .pkt2        { animation: packet 2s ease-in-out .8s infinite; }
+    .pkt3        { animation: packet 2s ease-in-out 1.6s infinite; }
+    .pkt4        { animation: packet 2s ease-in-out 1.2s infinite; }
+    .pkt5        { animation: packet 2s ease-in-out 0.5s infinite; }
+    .pkt6        { animation: packet 2s ease-in-out 1.8s infinite; }
+    .secured-dot { animation: blink 1.5s ease-in-out infinite; }
+  </style>
+
+  <!-- ── Ambient glow ── -->
+  <circle cx="280" cy="270" r="100" fill="url(#hsmGrad)"/>
+
+  <circle cx="280" cy="270" r="70" fill="none" stroke="#4285F4" stroke-width="1.5" opacity="0" class="pr1"/>
+  <circle cx="280" cy="270" r="70" fill="none" stroke="#4285F4" stroke-width="1.5" opacity="0" class="pr2"/>
+  <circle cx="280" cy="270" r="70" fill="none" stroke="#4285F4" stroke-width="1.5" opacity="0" class="pr3"/>
+
+  <!-- ── User → HSM connection lines ── -->
+  <line x1="130" y1="460" x2="280" y2="270" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity=".3"/>
+  <line x1="70"  y1="320" x2="280" y2="270" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity=".3"/>
+  <line x1="460" y1="130" x2="280" y2="270" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity=".3"/>
+  <line x1="490" y1="270" x2="280" y2="270" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity=".3"/>
+  <line x1="280" y1="60"  x2="280" y2="270" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity=".3"/>
+
+  <!-- Auth packets user → HSM -->
+  <line x1="130" y1="460" x2="280" y2="270" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 230" stroke-dashoffset="230" class="pkt1" filter="url(#gc)"/>
+  <line x1="70"  y1="320" x2="280" y2="270" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 230" stroke-dashoffset="230" class="pkt2" filter="url(#gc)"/>
+  <line x1="460" y1="130" x2="280" y2="270" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 230" stroke-dashoffset="230" class="pkt3" filter="url(#gc)"/>
+  <line x1="490" y1="270" x2="280" y2="270" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 230" stroke-dashoffset="230" class="pkt5" filter="url(#gc)"/>
+  <line x1="280" y1="60"  x2="280" y2="270" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 230" stroke-dashoffset="230" class="pkt6" filter="url(#gc)"/>
+
+
+  <!-- ── HSM Center (rectangle) ── -->
+  <g transform="translate(280,270)" filter="url(#gb)" class="hsm-hex">
+    <rect x="-54" y="-40" width="108" height="80" rx="8" fill="#0a0f1e" stroke="#4285F4" stroke-width="2"/>
+    <rect x="-48" y="-34" width="96" height="68" rx="5" fill="none" stroke="#4285F4" stroke-width=".5" opacity=".3"/>
+    <rect x="-12" y="-14" width="24" height="18" rx="3" fill="none" stroke="#4285F4" stroke-width="2"/>
+    <path d="M-8,-14 L-8,-22 C-8,-28 8,-28 8,-22 L8,-14" fill="none" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="0" cy="-4" r="3" fill="#4285F4" opacity=".85"/>
+    <text y="20" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4285F4" letter-spacing="2">HSM</text>
+  </g>
+
+  <!-- ── HSM → Blockchain 1 connection ── -->
+  <line x1="306" y1="310" x2="400" y2="458" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5 6" opacity=".35"/>
+  <path id="hsm-bc-path" d="M306,310 L400,458" fill="none"/>
+  <circle r="4" fill="#00d4ff" filter="url(#gc)">
+    <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.4s">
+      <mpath href="#hsm-bc-path"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.92;1" dur="1.8s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+
+  <!-- ── HSM → Blockchain 2 connection ── -->
+  <line x1="226" y1="230" x2="60" y2="150" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5 6" opacity=".35"/>
+  <path id="hsm-bc2-path" d="M226,230 L60,150" fill="none"/>
+  <circle r="4" fill="#00d4ff" filter="url(#gc)">
+    <animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s">
+      <mpath href="#hsm-bc2-path"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.92;1" dur="1.8s" repeatCount="indefinite" begin="1.2s"/>
+  </circle>
+
+  <!-- ── User 1 — bottom-left (130,460) ── -->
+  <g transform="translate(130,460)" filter="url(#gc)">
+    <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
+    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+  </g>
+
+  <!-- ── User 2 — left-center (70,320) ── -->
+  <g transform="translate(70,320)" filter="url(#gc)">
+    <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
+    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+  </g>
+
+  <!-- ── User 3 — top-right (460,130) ── -->
+  <g transform="translate(460,130)" filter="url(#gc)">
+    <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
+    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+  </g>
+
+  <!-- ── User 4 — right-center (490,270) ── -->
+  <g transform="translate(490,270)" filter="url(#gc)">
+    <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
+    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+  </g>
+
+  <!-- ── User 5 — top-center (280,60) ── -->
+  <g transform="translate(280,60)" filter="url(#gc)">
+    <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
+    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+  </g>
+
+  <!-- ── Blockchain Node 1 ── -->
+  <g transform="translate(400,458)" filter="url(#gb)">
+    <polygon points="0,-52 45,-26 45,26 0,52 -45,26 -45,-26" fill="#0a0f1e" stroke="#4285F4" stroke-width="1.8"/>
+    <polygon points="0,-43 37,-21 37,21 0,43 -37,21 -37,-21" fill="none" stroke="#4285F4" stroke-width=".5" opacity=".3"/>
+    <polygon points="0,-13 7,-9 7,9 0,13 -7,9 -7,-9" fill="none" stroke="#4285F4" stroke-width="1.4" opacity=".7" transform="translate(-9,-8)"/>
+    <polygon points="0,-13 7,-9 7,9 0,13 -7,9 -7,-9" fill="none" stroke="#4285F4" stroke-width="1.4" opacity=".7" transform="translate(9,-8)"/>
+    <text y="14" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4285F4" letter-spacing=".5">Blockchain</text>
+  </g>
+
+  <!-- ── Blockchain Node 2 ── -->
+  <g transform="translate(60,150)" filter="url(#gb)">
+    <polygon points="0,-52 45,-26 45,26 0,52 -45,26 -45,-26" fill="#0a0f1e" stroke="#4285F4" stroke-width="1.8"/>
+    <polygon points="0,-43 37,-21 37,21 0,43 -37,21 -37,-21" fill="none" stroke="#4285F4" stroke-width=".5" opacity=".3"/>
+    <polygon points="0,-13 7,-9 7,9 0,13 -7,9 -7,-9" fill="none" stroke="#4285F4" stroke-width="1.4" opacity=".7" transform="translate(-9,-8)"/>
+    <polygon points="0,-13 7,-9 7,9 0,13 -7,9 -7,-9" fill="none" stroke="#4285F4" stroke-width="1.4" opacity=".7" transform="translate(9,-8)"/>
+    <text y="14" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4285F4" letter-spacing=".5">Blockchain</text>
+  </g>
+
+
+</svg>
