@@ -139,7 +139,9 @@
             </span>
             <span>
               <span class="whitepaper-link-title">Secubit Whitepaper</span>
-              <span class="whitepaper-link-sub">Read the full architecture →</span>
+              <span class="whitepaper-link-sub">Private keys never leave the HSM. MPC splits control across independent
+                shares — Secubit cannot unilaterally access your funds. All signing and policy logic execute inside a
+                FIPS 140-3 tamper-resistant HSM. Read full architecture →</span>
             </span>
           </a>
         </div>
@@ -327,30 +329,30 @@
     const MODES = {
       'non-custodial': {
         steps: [
-          { label: 'Client App', sub: 'SDK / API', color: '#4285F4' },
-          { label: 'Your HSM', sub: 'Self-Hosted', color: '#00d4ff' },
-          { label: 'MPC Nodes', sub: 'Your Infrastructure', color: '#4285F4' },
-          { label: 'Secubit API', sub: 'Coordination Only', color: '#4285F4' },
+          { label: 'Browser', sub: 'User Approval & <br> Co-Sign', color: '#4285F4' },
+          { label: 'Your Server', sub: 'Aggregate Approvals & <br> Signature Shares', color: '#4285F4' },
+          { label: 'Secubit', sub: 'Add Network Data', color: '#00d4ff' },
+          { label: 'HSM', sub: 'Verify Approvals & <br> Co-Sign Transactions', color: '#4285F4' },
           { label: 'Blockchain', sub: 'Broadcast', color: '#6b7894' },
         ],
         callout: {
           icon: '🔑', color: '#00d4ff',
           title: 'Full Key Sovereignty',
-          body: 'In non-custodial mode, your keys are generated and stored in hardware you own. Secubit only provides coordination APIs — we never have access to your private keys or partial shares.',
+          body: 'In non-custodial mode, no single party holds the complete key. Instead, keys are divided into shares using Multi-Party Computing (MPC). One share remains inside the HSM, while the other share is distributed to client users. Transactions require both user approvals and collaboration between the HSM and user key share to produce a valid signature. This ensures that clients maintain direct control over their assets, while still benefiting from Secubit’s hardware-rooted enforcement and infrastructure.',
         }
       },
       'custodial': {
         steps: [
-          { label: 'Client App', sub: 'SDK / API', color: '#4285F4' },
-          { label: 'Secubit API', sub: 'Policy Engine', color: '#4285F4' },
-          { label: 'HSM Cluster', sub: 'FIPS 140-3', color: '#00d4ff' },
-          { label: 'MPC Nodes', sub: 'M-of-N Quorum', color: '#4285F4' },
+          { label: 'Browser', sub: 'User Approval', color: '#4285F4' },
+          { label: 'Your Server', sub: 'Aggregate Approvals', color: '#4285F4' },
+          { label: 'Secubit', sub: 'Add Network Data', color: '#00d4ff' },
+          { label: 'HSM', sub: 'Verify Approvals & <br>Sign Transactions', color: '#4285F4' },
           { label: 'Blockchain', sub: 'Broadcast', color: '#6b7894' },
         ],
         callout: {
           icon: '☁️', color: '#4285F4',
           title: 'Fully Managed Custody',
-          body: "In custodial mode, Secubit manages HSM and MPC infrastructure on your behalf. Ideal for rapid deployment with Secubit's enterprise SLA and compliance guarantees.",
+          body: "In custodial mode, Secubit’s HSMs hold the entire signing key, and you delegate custody to Secubit’s infrastructure. Even so, user approvals are still required: transactions are only signed if the HSM verifies that the threshold of authorized users have approved the request. This provides the convenience of managed custody while ensuring that unilateral actions are not possible.",
         }
       }
     };
@@ -375,7 +377,7 @@
     <div><strong>${callout.title}</strong><p>${callout.body}</p></div>
   `;
     }
-    setMode('non-custodial');
+    setMode('custodial');
 
     /* ── Waitlist ── */
     function submitWaitlist(id) {

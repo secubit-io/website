@@ -1016,12 +1016,10 @@ input[type=range] {
 
 .whitepaper-wrap {
     margin-top: 40px;
-    display: flex;
-    justify-content: center;
 }
 
 .whitepaper-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 14px;
     text-decoration: none;
