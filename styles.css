@@ -1025,17 +1025,16 @@ input[type=range] {
 
 .whitepaper-link-title {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: #e2e6f0;
 }
 
 .whitepaper-link-sub {
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     color: var(--muted);
     margin-top: 2px;
-    font-family: var(--mono);
 }
 
 /* ── Docs additions ─────────────────────────────────────────── */
