@@ -388,7 +388,7 @@ nav.scrolled {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    background: rgba(255, 255, 255, .04);
+    background: rgba(66, 133, 244, .04);
     border-radius: 16px;
     overflow: hidden;
 }
@@ -454,7 +454,7 @@ nav.scrolled {
 /* ── Architecture ───────────────────────────────────────────── */
 #architecture {
     padding: 96px 80px;
-    background: rgba(255, 255, 255, .015);
+    background: rgba(66, 133, 244, .04);
 }
 
 .arch-head {
@@ -503,7 +503,7 @@ nav.scrolled {
 }
 
 .flow-step {
-    background: rgba(255, 255, 255, .04);
+    background: rgba(66, 133, 244, .04);
     border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 12px;
     padding: 24px 28px;
@@ -589,7 +589,7 @@ nav.scrolled {
     justify-content: space-between;
     padding: 16px 20px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, .04);
+    background: rgba(66, 133, 244, .04);
     border: 1px solid rgba(255, 255, 255, .08);
     text-decoration: none;
     color: var(--text);
@@ -652,7 +652,7 @@ pre {
 /* ── Blog ───────────────────────────────────────────────────── */
 #blog {
     padding: 96px 80px;
-    background: rgba(255, 255, 255, .015);
+    background: rgba(66, 133, 244, .04);
 }
 
 .blog-head {
@@ -762,7 +762,7 @@ pre {
 .stat-card {
     padding: 28px 24px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, .04);
+    background: rgba(66, 133, 244, .04);
     border: 1px solid rgba(255, 255, 255, .07);
 }
 
