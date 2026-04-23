@@ -95,12 +95,18 @@
     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.92;1" dur="1.8s" repeatCount="indefinite" begin="1.2s"/>
   </circle>
 
-  <!-- ── User 1 — bottom-left (130,460) ── -->
+  <!-- ── Bot — bottom-left (130,460) ── -->
   <g transform="translate(130,460)" filter="url(#gc)">
     <circle r="40" fill="#0a0f1e" stroke="#00d4ff" stroke-width="1.5"/>
-    <circle cx="0" cy="-10" r="9" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
-    <path d="M-14,12 C-14,2 14,2 14,12" fill="none" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
-    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">User</text>
+    <!-- bot head -->
+    <rect x="-16" y="-13" width="32" height="24" rx="6" fill="none" stroke="#00d4ff" stroke-width="1.8"/>
+    <!-- bot eyes -->
+    <circle cx="-6" cy="-2" r="3.5" fill="#00d4ff"/>
+    <circle cx="6" cy="-2" r="3.5" fill="#00d4ff"/>
+    <!-- bot antenna -->
+    <line x1="0" y1="-13" x2="0" y2="-21" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="0" cy="-23" r="2.5" fill="#00d4ff"/>
+    <text y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#00d4ff" opacity=".85">Bot</text>
   </g>
 
   <!-- ── User 2 — left-center (70,320) ── -->
