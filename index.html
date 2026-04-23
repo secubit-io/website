@@ -328,7 +328,7 @@
         callout: {
           icon: '🔑', color: '#00d4ff',
           title: 'Full Key Sovereignty',
-          body: 'In non-custodial mode, no single party holds the complete key. Instead, keys are divided into shares using Multi-Party Computing (MPC). One share remains inside the HSM, while the other share is distributed to client users. Transactions require both user approvals and collaboration between the HSM and user key share to produce a valid signature. This ensures that clients maintain direct control over their assets, while still benefiting from Secubit’s hardware-rooted enforcement and infrastructure.',
+          body: 'Keys are split into shares using MPC — one inside the HSM, one held by the user. A valid signature requires both parties, so no single entity can move funds unilaterally. Clients retain full key sovereignty while Secubit enforces policy in hardware.',
         }
       },
       'custodial': {
@@ -342,7 +342,7 @@
         callout: {
           icon: '☁️', color: '#4285F4',
           title: 'Fully Managed Custody',
-          body: "In custodial mode, Secubit’s HSMs hold the entire signing key, and you delegate custody to Secubit’s infrastructure. Even so, user approvals are still required: transactions are only signed if the HSM verifies that the threshold of authorized users have approved the request. This provides the convenience of managed custody while ensuring that unilateral actions are not possible.",
+          body: "Secubit's HSMs hold the full signing key on your behalf. Transactions are only signed after the HSM verifies that the required threshold of authorized users have approved — making unilateral actions impossible even in fully managed mode.",
         }
       }
     };
