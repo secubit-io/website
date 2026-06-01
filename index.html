@@ -12,24 +12,14 @@
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="/components.js" defer></script>
 </head>
 
 <body>
   <div id="page">
 
-    <!-- ── Nav ── -->
-    <nav id="nav">
-      <img src="logo.svg" alt="Secubit" class="nav-logo">
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#api">API</a>
-        <a href="blogs/index.html">Blog</a>
-        <a href="#about">About</a>
-        <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
-        <a href="#cta" class="btn">Join Waitlist</a>
-      </div>
-    </nav>
+    <!-- ── Nav (shared, injected by components.js) ── -->
+    <div id="site-nav"></div>
 
     <!-- ── Hero ── -->
     <section id="hero">
@@ -156,10 +146,11 @@
           <p class="api-lead">RESTful API with comprehensive docs, client SDKs, and webhook support. Built for
             engineers who need reliability at scale.</p>
           <div class="doc-links">
-            <a href="https://api.secubit.io/docs/" target="_blank" class="doc-link"><span>API Playground <span
+            <a href="https://api.secubit.io/playground" target="_blank" class="doc-link"><span>API Playground <span
                   class="doc-badge">Mainnet</span></span><i class="doc-arrow">→</i></a>
-            <a href="https://testnet.api.secubit.io/docs/" target="_blank" class="doc-link"><span>API Playground <span
-                  class="doc-badge doc-badge--cyan">Testnet</span></span><i class="doc-arrow doc-arrow--cyan">→</i></a>
+            <a href="https://testnet.api.secubit.io/playground" target="_blank" class="doc-link"><span>API Playground
+                <span class="doc-badge doc-badge--cyan">Testnet</span></span><i
+                class="doc-arrow doc-arrow--cyan">→</i></a>
             <a href="https://wallet.secubit.io/" target="_blank" class="doc-link"><span>Wallet Demo</span><i
                 class="doc-arrow">→</i></a>
           </div>
@@ -172,34 +163,6 @@
             <span>secubit.js</span>
           </div>
           <pre id="codebox-pre"></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Blog ── -->
-    <section id="blog">
-      <div class="section-inner">
-        <div class="blog-head reveal">
-          <div>
-            <div class="label">Blog</div>
-            <h2 class="blog-title">Latest insights</h2>
-          </div>
-          <a href="blogs/index.html">View all →</a>
-        </div>
-        <div class="blog-grid">
-          <a href="blogs/posts/secubit-vs-privy-dfns-fireblocks.html" class="blog-card reveal">
-            <div class="blog-meta"><span class="blog-tag">Comparison</span><span class="blog-date">May 2025</span></div>
-            <h3>Secubit vs. Privy vs. Dfns vs. Fireblocks: How Wallet Infrastructure Really Differs</h3>
-          </a>
-          <a href="blogs/index.html" class="blog-card reveal reveal-delay-1">
-            <div class="blog-meta"><span class="blog-tag">Security</span><span class="blog-date">Coming soon</span>
-            </div>
-            <h3>Why HSM + MPC Is the Gold Standard for Institutional Crypto Custody</h3>
-          </a>
-          <a href="blogs/index.html" class="blog-card reveal reveal-delay-2">
-            <div class="blog-meta"><span class="blog-tag">Architecture</span><span class="blog-date">Coming soon</span></div>
-            <h3>Self-Sovereign Key Management: The Case Against Custodial-Only Solutions</h3>
-          </a>
         </div>
       </div>
     </section>
@@ -236,6 +199,35 @@
       </div>
     </section>
 
+    <!-- ── Blog ── -->
+    <section id="blog">
+      <div class="section-inner">
+        <div class="blog-head reveal">
+          <div>
+            <div class="label">Blog</div>
+            <h2 class="blog-title">Latest insights</h2>
+          </div>
+          <a href="blogs/index.html">View all →</a>
+        </div>
+        <div class="blog-grid">
+          <a href="blogs/posts/secubit-vs-privy-dfns-fireblocks.html" class="blog-card reveal">
+            <div class="blog-meta"><span class="blog-tag">Comparison</span><span class="blog-date">May 2025</span></div>
+            <h3>Secubit vs. Privy vs. Dfns vs. Fireblocks: How Wallet Infrastructure Really Differs</h3>
+          </a>
+          <a href="blogs/index.html" class="blog-card reveal reveal-delay-1">
+            <div class="blog-meta"><span class="blog-tag">Security</span><span class="blog-date">Coming soon</span>
+            </div>
+            <h3>Why HSM + MPC Is the Gold Standard for Institutional Crypto Custody</h3>
+          </a>
+          <a href="blogs/index.html" class="blog-card reveal reveal-delay-2">
+            <div class="blog-meta"><span class="blog-tag">Architecture</span><span class="blog-date">Coming soon</span>
+            </div>
+            <h3>Self-Sovereign Key Management: The Case Against Custodial-Only Solutions</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ── CTA ── -->
     <section id="cta">
       <div class="cta-inner reveal">
@@ -253,21 +245,8 @@
     </section>
 
     <!-- ── Footer ── -->
-    <footer>
-      <div>
-        <img src="logo-footer.svg" alt="Secubit">
-        <div class="footer-copy">Self-Sovereign WaaS &copy;
-          <script>document.write(new Date().getFullYear())</script> Secubit.io
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
-        <a href="https://api.secubit.io/docs/" target="_blank">API</a>
-        <a href="https://wallet.secubit.io/" target="_blank">Wallet</a>
-        <a href="blogs/index.html">Blog</a>
-        <a href="mailto:info@secubit.io">Contact</a>
-      </div>
-    </footer>
+    <!-- ── Footer (shared, injected by components.js) ── -->
+    <div id="site-footer"></div>
 
     <!-- ── Tweaks Panel ── -->
     <div id="tweaks-panel">
@@ -294,25 +273,19 @@
 
   <script>
     /* ── Codebox loader ── */
-    fetch('codebox.js')
-      .then(r => r.text())
-      .then(code => {
-        const highlighted = Prism.highlight(code, Prism.languages.javascript, 'javascript');
-        document.getElementById('codebox-pre').innerHTML = highlighted;
-      });
-
-    /* ── Nav scroll ── */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
+    /* Run after window load so the Prism scripts at the bottom of the page are
+       guaranteed to have executed (a fast local fetch can otherwise resolve
+       before Prism is defined). Fall back to plain text if Prism is missing. */
+    window.addEventListener('load', () => {
+      fetch('codebox.js')
+        .then(r => r.text())
+        .then(code => {
+          const pre = document.getElementById('codebox-pre');
+          pre.innerHTML = window.Prism
+            ? Prism.highlight(code, Prism.languages.javascript, 'javascript')
+            : code.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+        });
     });
-
-    /* ── Scroll reveal ── */
-    const revealEls = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => obs.observe(el));
 
     /* ── Architecture toggle ── */
     const MODES = {

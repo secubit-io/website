@@ -5,9 +5,16 @@ step, no framework: plain HTML/CSS/JS. The homepage is `index.html` + `styles.cs
 lives under `blogs/` and shares the same `styles.css` (blog rules live in its "BLOG PAGES"
 section at the bottom of the file).
 
+The **nav and footer are shared** across every page: each page has empty `<div id="site-nav">`
+and `<div id="site-footer">` placeholders plus `<script src="/components.js" defer></script>`,
+and `components.js` injects the markup (and handles nav-scroll + `.reveal` animation). Do NOT
+hardcode a `<nav>`/`<footer>` in a page — use the placeholders. `components.js` uses root-relative
+URLs (`/...`), so the same markup works at any depth (the site is served at the domain root).
+
 ```
 index.html              # homepage
 styles.css              # ALL styles — homepage + blog (single stylesheet)
+components.js            # shared nav + footer (injected) + nav-scroll + reveal
 blogs/
   index.html            # blog listing  -> https://www.secubit.io/blogs/
   posts/
@@ -44,18 +51,15 @@ Copy `blogs/posts/secubit-vs-privy-dfns-fireblocks.html` as the shell and replac
 Keep these page parts verbatim (they only change per-post where noted):
 
 - **`<head>`**: set `<title>` to `Post title — Secubit Blog` and `<meta name="description">` to the
-  `excerpt`. Asset links stay `../../logo_favicon.png`, `../../logo.svg`, and `../../styles.css`.
-- **Nav**: unchanged. Links are `../../index.html#features|#architecture|#api|#about`,
-  Blog → `../index.html`, Whitepaper (external), Join Waitlist → `../../index.html#cta`.
+  `excerpt`. Keep `../../logo_favicon.png`, `../../styles.css`, and `<script src="/components.js" defer>`.
+- **Nav & footer**: do not author them — keep the `<div id="site-nav"></div>` and
+  `<div id="site-footer"></div>` placeholders; `components.js` injects them.
 - **`<header class="post-hero">`**: set the `back-link` (`../index.html`), the `tag` + `read_time`
   in `.tag-row`, the `<h1>` title, and the byline `who` (author) / `when` (e.g. "June 2025").
-- **Footer**: unchanged (Blog → `../index.html`, Contact → `mailto:info@secubit.io`).
 
 > Path rule for article pages (they sit in `blogs/posts/`): root assets are `../../`,
 > the stylesheet is `../../styles.css`, and links back to the listing are `../index.html`.
 > Never reintroduce Cloudflare `/cdn-cgi/...` email links — use `mailto:info@secubit.io`.
-> Keep the small nav-scroll `<script>` at the bottom of the page (it toggles the nav background
-> on scroll, matching the homepage).
 
 ### 3. Convert the Markdown body → HTML (mapping to CSS classes)
 Wrap the body in `<article class="article">`. The classes below are all defined in the
@@ -91,15 +95,11 @@ Wrap the body in `<article class="article">`. The classes below are all defined 
 ```
 The `id="ref-N"` values must match the `#ref-N` anchors used in the body.
 
-**CTA** — always end every post with this block (copy verbatim from the example):
+**CTA** — always end every post (after References) with the shared CTA placeholder; do not author
+the block — `components.js` injects it:
 ```html
-<section class="post-cta">
-  <div class="post-cta-inner">
-    <h3>Want hardware-grade assurance, delivered as a service?</h3>
-    <p>Join the waitlist for early access to Secubit's institutional WaaS platform.</p>
-    <a href="../../index.html#cta" class="btn">Join Waitlist →</a>
-  </div>
-</section>
+<!-- ── CTA (shared, injected by components.js) ── -->
+<div id="site-post-cta"></div>
 ```
 
 ### 4. Register the post on the listing (`blogs/index.html`)

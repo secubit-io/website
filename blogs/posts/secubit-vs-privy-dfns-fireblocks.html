@@ -9,23 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
+<script src="/components.js" defer></script>
 </head>
 <body>
 <div id="page">
 
-<!-- ── Nav ── -->
-<nav>
-  <a href="../../index.html"><img src="../../logo.svg" alt="Secubit" class="nav-logo"></a>
-  <div class="nav-links">
-    <a href="../../index.html#features">Features</a>
-    <a href="../../index.html#architecture">Architecture</a>
-    <a href="../../index.html#api">API</a>
-    <a href="../index.html">Blog</a>
-    <a href="../../index.html#about">About</a>
-    <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
-    <a href="../../index.html#cta" class="btn">Join Waitlist</a>
-  </div>
-</nav>
+<!-- ── Nav (shared, injected by components.js) ── -->
+<div id="site-nav"></div>
 
 <!-- ── Post hero ── -->
 <header class="post-hero">
@@ -179,37 +169,12 @@
   <p class="disclaimer">Secubit architecture details in this post are provided by Secubit. All third-party descriptions are based on publicly available product documentation and reporting and reflect our understanding at the time of writing. Capabilities evolve quickly; verify current specifications with each provider before making decisions.</p>
 </section>
 
-<!-- ── CTA ── -->
-<section class="post-cta">
-  <div class="post-cta-inner">
-    <h3>Want hardware-grade assurance, delivered as a service?</h3>
-    <p>Join the waitlist for early access to Secubit's institutional WaaS platform.</p>
-    <a href="../../index.html#cta" class="btn">Join Waitlist →</a>
-  </div>
-</section>
+<!-- ── CTA (shared, injected by components.js) ── -->
+<div id="site-post-cta"></div>
 
-<!-- ── Footer ── -->
-<footer>
-  <div>
-    <a href="../../index.html"><img src="../../logo-footer.svg" alt="Secubit"></a>
-    <div class="footer-copy">Self-Sovereign WaaS &copy; 2025 Secubit.io</div>
-  </div>
-  <div class="footer-links">
-    <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
-    <a href="https://api.secubit.io/docs/" target="_blank">API</a>
-    <a href="https://wallet.secubit.io/" target="_blank">Wallet</a>
-    <a href="../index.html">Blog</a>
-    <a href="mailto:info@secubit.io">Contact</a>
-  </div>
-</footer>
+<!-- ── Footer (shared, injected by components.js) ── -->
+<div id="site-footer"></div>
 
 </div>
-<script>
-// Nav background on scroll (matches the homepage)
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-});
-</script>
 </body>
 </html>
