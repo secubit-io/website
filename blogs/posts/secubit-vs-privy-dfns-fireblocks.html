@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secubit vs. Privy vs. Dfns vs. Fireblocks — Secubit Blog</title>
+<meta name="description" content="Wallet infrastructure is often discussed as if every provider does the same thing. We compare Secubit, Privy, Dfns, and Fireblocks on the question that determines security and fit: where do the keys live, and what controls a signature?">
+<link rel="icon" href="../../logo_favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<div id="page">
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="../../index.html"><img src="../../logo.svg" alt="Secubit" class="nav-logo"></a>
+  <div class="nav-links">
+    <a href="../../index.html#features">Features</a>
+    <a href="../../index.html#architecture">Architecture</a>
+    <a href="../../index.html#api">API</a>
+    <a href="../index.html">Blog</a>
+    <a href="../../index.html#about">About</a>
+    <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
+    <a href="../../index.html#cta" class="btn">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- ── Post hero ── -->
+<header class="post-hero">
+  <a href="../index.html" class="back-link">← Back to Blog</a>
+  <div class="tag-row">
+    <span class="tag">Comparison</span>
+    <span class="meta">8 min read</span>
+  </div>
+  <h1>Secubit vs. Privy vs. Dfns vs. Fireblocks: How Wallet Infrastructure Really Differs</h1>
+  <div class="byline">
+    <div class="avatar">S</div>
+    <div>
+      <div class="who">Secubit Team</div>
+      <div class="when">May 2025</div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Article ── -->
+<article class="article">
+  <p class="lead">Digital-asset wallet infrastructure is often discussed as if every provider does the same thing. They don't. The category spans consumer onboarding SDKs, institutional MPC platforms, and hardware-rooted custody systems — and the differences come down to one question that determines security, regulation, and fit: <strong>where do the keys live, and what actually controls a signature?</strong></p>
+
+  <p>This post compares four approaches — Secubit, Privy, Dfns, and Fireblocks — on the dimensions that matter when you're choosing what to build on. Every claim about another provider is footnoted to a public source so you can verify it yourself.</p>
+
+  <h2>At a glance</h2>
+  <div class="table-scroll">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Privy</th>
+          <th>Dfns</th>
+          <th>Fireblocks</th>
+          <th>Secubit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>What it is</th>
+          <td>Embedded-wallet SDK for apps</td>
+          <td>API-first key-management platform</td>
+          <td>Broad institutional infrastructure suite</td>
+          <td>HSM-rooted wallet service</td>
+        </tr>
+        <tr>
+          <th>Primary users</th>
+          <td>Consumer &amp; web3 app developers</td>
+          <td>Fintechs, PSPs, exchanges, custodians</td>
+          <td>Exchanges, banks, large institutions</td>
+          <td>Institutions needing bank-grade assurance</td>
+        </tr>
+        <tr>
+          <th>Core key technology</th>
+          <td>Shamir Secret Sharing + cloud TEE (Intel SGX / AWS Nitro) <sup>[1]</sup></td>
+          <td>MPC / threshold signatures (HSM optional) <sup>[5]</sup></td>
+          <td>MPC across SGX enclaves (+ Key Link for HSM/KMS) <sup>[8]</sup></td>
+          <td>Custom firmware inside the HSM (+ MPC)</td>
+        </tr>
+        <tr>
+          <th>Where the key lives</th>
+          <td>Reconstituted in a cloud enclave at signing <sup>[1]</sup></td>
+          <td>Split across MPC nodes, or in an HSM vault <sup>[5][6]</sup></td>
+          <td>Split across MPC enclaves in multiple clouds <sup>[8]</sup></td>
+          <td>Inside a FIPS-certified HSM; never assembled outside it</td>
+        </tr>
+        <tr>
+          <th>Transaction integrity</th>
+          <td>App-level</td>
+          <td>Policy engine + validation gate (software layer) <sup>[6]</sup></td>
+          <td>Policy engine (software layer)</td>
+          <td>Transaction built from approver-signed data <strong>inside</strong> the HSM</td>
+        </tr>
+        <tr>
+          <th>Custom logic inside the HSM</th>
+          <td>No HSM</td>
+          <td>No (HSM used as a key vault) <sup>[6]</sup></td>
+          <td>No (HSM used as a key vault) <sup>[8]</sup></td>
+          <td><strong>Yes</strong></td>
+        </tr>
+        <tr>
+          <th>Custodial / non-custodial</th>
+          <td>Non-custodial by default <sup>[1]</sup></td>
+          <td>Configurable (delegated signing) <sup>[7]</sup></td>
+          <td>Both (+ a regulated trust company) <sup>[9][10]</sup></td>
+          <td>Both modes (HSM custodial; HSM+MPC non-custodial)</td>
+        </tr>
+        <tr>
+          <th>Delivery model</th>
+          <td>SaaS / SDK</td>
+          <td>SaaS / API (cloud, hybrid, on-prem)</td>
+          <td>SaaS platform</td>
+          <td>SaaS / API</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);font-style:italic;">(Comparison based on publicly available information; see References.)</p>
+
+  <h2>Privy — built for consumer onboarding</h2>
+  <p>Privy is embedded-wallet infrastructure aimed at application developers. Its job is to drop a self-custodial wallet directly into a consumer app behind familiar logins — email, social, passkeys — so users never see a seed phrase. It powers tens of millions of accounts and was acquired by Stripe, tightening its links to payments and identity. <sup><a href="#ref-3">[3]</a><a href="#ref-4">[4]</a></sup></p>
+  <p>Under the hood, Privy splits each key into two shares using Shamir's Secret Sharing: one secured inside a Trusted Execution Environment (TEE) and one released only after valid authentication. The full key is reconstituted briefly <strong>in memory inside a cloud TEE</strong> (Intel SGX or AWS Nitro) at signing time and never persisted. <sup><a href="#ref-1">[1]</a></sup> It's an elegant model for usability and scale — but the trust boundary is a general-purpose cloud enclave. As Privy's own documentation candidly notes, whoever controls the enclave ultimately controls the keys, and TEEs have a history of side-channel exposure. <sup><a href="#ref-2">[2]</a></sup></p>
+  <p class="bestfit"><strong>Best fit:</strong> consumer and web3 apps that prioritize frictionless onboarding at scale.</p>
+
+  <h2>Dfns — programmable keys for fintech</h2>
+  <p>Dfns is an API-first key-management platform for fintechs, payment companies, exchanges, and custodians. Its core is MPC / threshold signatures: a private key is generated as multiple shares distributed across independent nodes, with a threshold required to sign, across 50+ chains. No complete key is ever assembled. <sup><a href="#ref-5">[5]</a></sup></p>
+  <p>Dfns also supports HSMs as an <em>alternative</em> key store, integrated through the standard PKCS#11 interface. Importantly, in that model the HSM acts as a vault and signing engine — it stores and signs — while the approval and policy logic runs in the surrounding software. <sup><a href="#ref-6">[6]</a></sup> Its "delegated signing" feature lets a platform stay custodial or push control to end-user devices to remain non-custodial. <sup><a href="#ref-7">[7]</a></sup></p>
+  <p class="bestfit"><strong>Best fit:</strong> teams that want flexible, programmable key infrastructure and the option to keep keys in MPC, an HSM, or their own jurisdiction.</p>
+
+  <h2>Fireblocks — the institutional suite</h2>
+  <p>Fireblocks is the broadest of the four: not just key management but a whole institutional stack — a counterparty network, treasury management, a tokenization engine, payments, and a wallets-as-a-service product. Its default security model is MPC, splitting wallet keys across Intel SGX enclaves hosted in multiple clouds, with an optional "Key Link" path to connect an existing HSM or KMS. <sup><a href="#ref-8">[8]</a></sup></p>
+  <p>Fireblocks positions its core platform as a technology provider — the customer controls keys and Fireblocks cannot move funds <sup><a href="#ref-9">[9]</a></sup> — while operating a separate, regulated trust company for clients who need qualified custody. <sup><a href="#ref-10">[10]</a></sup> The breadth and brand recognition are real advantages; the trade-off is an enterprise footprint and sales motion.</p>
+  <p class="bestfit"><strong>Best fit:</strong> large institutions that want one vendor across custody, trading connectivity, and tokenization.</p>
+
+  <h2>Secubit — the security lives in the hardware</h2>
+  <p>Secubit takes a different architectural stance. Rather than treating the HSM as a passive key vault, Secubit runs <strong>custom firmware inside a FIPS-certified HSM</strong>, so the trust-critical work happens within the tamper-resistant boundary itself.</p>
+  <p>Two design choices follow from this:</p>
+  <ul>
+    <li><strong>Transactions are constructed inside the HSM.</strong> Instead of signing a payload assembled by an outside server, Secubit's HSM builds the Bitcoin or Ethereum transaction from structured data (amount, destination) that an approver has cryptographically signed. What an approver authorizes is provably what gets signed — a server breach can't swap the destination after the fact.</li>
+    <li><strong>Two operating modes.</strong> A custodial mode where keys are protected inside the HSM, and a non-custodial mode that splits the key between the HSM and the user's side (HSM + MPC), so no single party can reconstruct it.</li>
+  </ul>
+  <p>The premise is the one Secubit was founded on: if the approval logic and transaction assembly live <em>inside</em> the hardware, then compromising the servers or cloud around it doesn't drain the wallet. And it's delivered as a <strong>service</strong> — institutions integrate an API rather than designing and operating their own key infrastructure.</p>
+  <p class="bestfit"><strong>Best fit:</strong> institutions that want hardware-grade assurance and transaction integrity without building it in-house.</p>
+
+  <h2>How to choose</h2>
+  <p>The decision is rarely about features in isolation — it's about your threat model and who you serve:</p>
+  <ul>
+    <li><strong>Optimizing for consumer onboarding UX?</strong> Privy.</li>
+    <li><strong>Want programmable, jurisdiction-flexible key infrastructure?</strong> Dfns.</li>
+    <li><strong>Need one institutional suite spanning custody, trading, and tokenization?</strong> Fireblocks.</li>
+    <li><strong>Want the approval logic and transaction integrity enforced inside certified hardware, delivered as a service?</strong> Secubit.</li>
+  </ul>
+  <p>The common thread across all four is that <strong>control of the keys — not the marketing label — defines both the security and the regulatory posture.</strong> A provider that can never unilaterally move funds is a technology provider; one that can is a custodian. Knowing exactly where each architecture draws that line is the most important due-diligence step you can take.</p>
+</article>
+
+<!-- ── References ── -->
+<section class="references">
+  <hr style="border:none;border-top:1px solid var(--border);margin-bottom:36px;">
+  <h2>References</h2>
+  <ol>
+    <li id="ref-1">Privy — <em>Security architecture</em> (Shamir Secret Sharing, TEE shares, key reconstituted only inside the enclave at signing): <a href="https://docs.privy.io/security/wallet-infrastructure/architecture" target="_blank" rel="noopener">docs.privy.io/security/wallet-infrastructure/architecture</a></li>
+    <li id="ref-2">Privy — <em>Embedded Wallets 101</em> ("whoever owns the enclave owns the keys"; TEE side-channel and vendor-dependency caveats): <a href="https://www.privy.io/embedded-wallets-101" target="_blank" rel="noopener">privy.io/embedded-wallets-101</a></li>
+    <li id="ref-3">Privy — <em>How Privy embedded wallets work</em> (account scale; TEE + key sharding; chosen over TSS-based MPC): <a href="https://privy.io/blog/how-privy-embedded-wallets-work" target="_blank" rel="noopener">privy.io/blog/how-privy-embedded-wallets-work</a></li>
+    <li id="ref-4">Openfort — <em>Best Wallet-as-a-Service (WaaS) Providers</em> (notes Privy's Stripe acquisition and billing/identity integration): <a href="https://www.openfort.io/blog/best-wallet-as-a-service" target="_blank" rel="noopener">openfort.io/blog/best-wallet-as-a-service</a></li>
+    <li id="ref-5">Dfns API documentation (DeepWiki) — MPC/TSS key shares distributed across nodes with a signing threshold, 50+ chains; HSM as an alternative store: <a href="https://deepwiki.com/dfns/dfns-api-docs" target="_blank" rel="noopener">deepwiki.com/dfns/dfns-api-docs</a></li>
+    <li id="ref-6">Dfns — <em>Using Hardware Security Modules (HSMs)</em> (HSM integrated via PKCS#11 as a key store/signing engine; no persistent key storage in the HSM): <a href="https://docs.dfns.co/d/guides/using-hardware-security-modules-hsms" target="_blank" rel="noopener">docs.dfns.co/d/guides/using-hardware-security-modules-hsms</a></li>
+    <li id="ref-7">Dfns — <em>Delegated Signing</em> (custodial vs. self-custodial configuration; "control of the API is the new proof of custodianship"): <a href="https://docs.dfns.co/d/advanced-topics/delegated-signing" target="_blank" rel="noopener">docs.dfns.co/d/advanced-topics/delegated-signing</a></li>
+    <li id="ref-8">Securosys Docs — <em>Store Fireblocks signing keys on a Primus HSM</em> (describes Fireblocks' default MPC across Intel SGX enclaves in multiple clouds, and Key Link as the HSM/KMS alternative): <a href="https://docs.securosys.com/fireblocks/overview/" target="_blank" rel="noopener">docs.securosys.com/fireblocks/overview</a></li>
+    <li id="ref-9">Fireblocks — <em>Digital Asset Custody 101</em> (Fireblocks as a custody technology provider with no ability to access or move customer funds): <a href="https://www.fireblocks.com/report/digital-asset-custody" target="_blank" rel="noopener">fireblocks.com/report/digital-asset-custody</a></li>
+    <li id="ref-10">Fireblocks — <em>Fireblocks Custody Network / Trust Company</em> (Fireblocks Trust Company, a NYDFS-chartered limited-purpose trust company for qualified custody): <a href="https://www.fireblocks.com/global-custodians" target="_blank" rel="noopener">fireblocks.com/global-custodians</a></li>
+  </ol>
+  <p class="disclaimer">Secubit architecture details in this post are provided by Secubit. All third-party descriptions are based on publicly available product documentation and reporting and reflect our understanding at the time of writing. Capabilities evolve quickly; verify current specifications with each provider before making decisions.</p>
+</section>
+
+<!-- ── CTA ── -->
+<section class="post-cta">
+  <div class="post-cta-inner">
+    <h3>Want hardware-grade assurance, delivered as a service?</h3>
+    <p>Join the waitlist for early access to Secubit's institutional WaaS platform.</p>
+    <a href="../../index.html#cta" class="btn">Join Waitlist →</a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div>
+    <a href="../../index.html"><img src="../../logo-footer.svg" alt="Secubit"></a>
+    <div class="footer-copy">Self-Sovereign WaaS &copy; 2025 Secubit.io</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
+    <a href="https://api.secubit.io/docs/" target="_blank">API</a>
+    <a href="https://wallet.secubit.io/" target="_blank">Wallet</a>
+    <a href="../index.html">Blog</a>
+    <a href="mailto:info@secubit.io">Contact</a>
+  </div>
+</footer>
+
+</div>
+<script>
+// Nav background on scroll (matches the homepage)
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
