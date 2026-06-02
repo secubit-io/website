@@ -7,129 +7,93 @@ section at the bottom of the file).
 
 The **nav and footer are shared** across every page: each page has empty `<div id="site-nav">`
 and `<div id="site-footer">` placeholders plus `<script src="/components.js" defer></script>`,
-and `components.js` injects the markup (and handles nav-scroll + `.reveal` animation). Do NOT
-hardcode a `<nav>`/`<footer>` in a page — use the placeholders. `components.js` uses root-relative
-URLs (`/...`), so the same markup works at any depth (the site is served at the domain root).
+and `components.js` injects the markup (and handles nav-scroll + `.reveal` animation). Blog posts
+also include a `<div id="site-post-cta">` placeholder for the shared call-to-action. Do NOT
+hardcode a `<nav>`/`<footer>`/CTA in a page — use the placeholders. `components.js` uses
+root-relative URLs (`/...`), so the same markup works at any depth (served at the domain root).
+
+`.nojekyll` (repo root) disables GitHub Pages' Jekyll so files are served verbatim — **required**
+so the `blogs/posts/<slug>.md` files are fetchable (Jekyll otherwise consumes front-matter `.md`
+files and they 404). Do not delete it.
 
 ```
+.nojekyll               # serve files as-is on GitHub Pages (keep!)
 index.html              # homepage
 styles.css              # ALL styles — homepage + blog (single stylesheet)
-components.js            # shared nav + footer (injected) + nav-scroll + reveal
+components.js            # shared nav + footer + CTA (injected) + nav-scroll + reveal
 blogs/
   index.html            # blog listing  -> https://www.secubit.io/blogs/
+  posts.html            # generic post renderer -> /blogs/posts.html?post=<slug>
   posts/
-    <slug>.md           # Markdown source of a post (kept for re-conversion / editing)
-    <slug>.html         # the published article page
+    <slug>.md           # a post — Markdown source + YAML front matter (the ONLY per-post file)
 ```
 
-## How to add a new blog post from a Markdown file
+## Posts are Markdown-only — there is no per-post HTML
 
-The author writes a post as Markdown. You convert it to an article HTML page by hand using the
-existing template, then register it on the listing. **`blogs/posts/secubit-vs-privy-dfns-fireblocks.{md,html}`
-is the canonical worked example — copy from it.**
+A blog post is just `blogs/posts/<slug>.md`. It is rendered at runtime by `blogs/posts.html`,
+which reads `?post=<slug>`, fetches the `.md`, parses the front matter to build the `.post-hero`
+header (tag, read_time, title, byline), renders the body with `marked` (loaded from CDN), then
+post-processes the output to apply the site's post classes so it looks like a normal article:
+- first paragraph → `.lead`
+- tables → `table.cmp` inside `.table-scroll`, and each row's first cell → `<th>` (bold label)
+- "Best fit:" paragraphs → `.bestfit`
+- a `## References` heading and everything after it → a sibling `<section class="references">`
+  (a trailing blockquote becomes the `.disclaimer`)
 
-### 1. Save the Markdown source
-Save the file as `blogs/posts/<slug>.md`. `<slug>` is lowercase, hyphenated, URL-safe
-(e.g. `why-hsm-mpc-is-the-gold-standard`). Use this front matter:
+Do **not** generate static HTML for posts. To preview existing rendering logic, read
+`blogs/posts.html`. Canonical example post: `blogs/posts/secubit-vs-privy-dfns-fireblocks.md`.
+
+## How to add a new blog post
+
+### 1. Write the Markdown
+Create `blogs/posts/<slug>.md` (`<slug>` lowercase, hyphenated, URL-safe). Front matter:
 
 ```yaml
 ---
 title: "Full post title"
-date: 2025-06-12          # ISO date
+date: 2025-06-12          # ISO date; rendered as e.g. "June 2025"
 tag: Security             # Comparison | Security | Architecture | Compliance | ...
 read_time: 6 min read
 author: Secubit Team      # default
-excerpt: "One-sentence summary used on cards and the <meta description>."
-featured: false           # true if it should be the big featured card on the listing
+excerpt: "One-sentence summary used on listing cards and the <meta description>."
+featured: false           # true => belongs in the listing's featured slot
 ---
 
-Markdown body...
+Markdown body…
 ```
 
-### 2. Generate `blogs/posts/<slug>.html`
-Copy `blogs/posts/secubit-vs-privy-dfns-fireblocks.html` as the shell and replace the content.
-Keep these page parts verbatim (they only change per-post where noted):
+Then write the body in plain Markdown — headings (`##`/`###`), `**bold**`, `*italic*`, links,
+images, bullet/numbered lists, `> blockquotes`, and GitHub-flavored tables all render. For a
+comparison table, make the first column the row label (it becomes a bold `<th>` automatically).
+For "best fit" callouts, start the paragraph with `**Best fit:**`. Put citations under a
+`## References` heading as a numbered list; an optional final `> blockquote` becomes the disclaimer.
 
-- **`<head>`**: set `<title>` to `Post title — Secubit Blog` and `<meta name="description">` to the
-  `excerpt`. Keep `../../logo_favicon.png`, `../../styles.css`, and `<script src="/components.js" defer>`.
-- **Nav & footer**: do not author them — keep the `<div id="site-nav"></div>` and
-  `<div id="site-footer"></div>` placeholders; `components.js` injects them.
-- **`<header class="post-hero">`**: set the `back-link` (`../index.html`), the `tag` + `read_time`
-  in `.tag-row`, the `<h1>` title, and the byline `who` (author) / `when` (e.g. "June 2025").
+The post is immediately live at `/blogs/posts.html?post=<slug>` — nothing to generate.
 
-> Path rule for article pages (they sit in `blogs/posts/`): root assets are `../../`,
-> the stylesheet is `../../styles.css`, and links back to the listing are `../index.html`.
-> Never reintroduce Cloudflare `/cdn-cgi/...` email links — use `mailto:info@secubit.io`.
-
-### 3. Convert the Markdown body → HTML (mapping to CSS classes)
-Wrap the body in `<article class="article">`. The classes below are all defined in the
-"BLOG PAGES" section of `styles.css`.
-
-| Markdown | HTML |
-|---|---|
-| First/intro paragraph | `<p class="lead">…</p>` |
-| Other paragraphs | `<p>…</p>` |
-| `## Heading` | `<h2>…</h2>` |
-| `### Heading` | `<h3>…</h3>` |
-| `**bold**` | `<strong>…</strong>` (use for emphasis; renders in brighter text) |
-| `*italic*` | `<em>…</em>` |
-| Links `[text](url)` | `<a href="url" target="_blank" rel="noopener">text</a>` (auto-styled blue) |
-| Images `![alt](path)` | `<img src="path" alt="alt">` (use `../../` for root-level images) |
-| Bullet list | `<ul><li>…</li></ul>` (blue-dot bullets are automatic) |
-| "Best fit:" / key takeaway line | `<p class="bestfit"><strong>Best fit:</strong> …</p>` |
-| Tables | `<div class="table-scroll"><table class="cmp"><thead>…</thead><tbody>…</tbody></table></div>` — use `<th>` for the left-hand row labels too |
-| Footnote marker `[1]` | `<sup><a href="#ref-1">[1]</a></sup>` |
-| Tag chip | `<span class="tag">Comparison</span>` (cyan) or `<span class="tag blue">Security</span>` |
-
-**References** (if the post has footnotes): close `</article>`, then add
-```html
-<section class="references">
-  <hr style="border:none;border-top:1px solid var(--border);margin-bottom:36px;">
-  <h2>References</h2>
-  <ol>
-    <li id="ref-1">Source — <em>title</em>: <a href="URL" target="_blank" rel="noopener">URL</a></li>
-    ...
-  </ol>
-  <p class="disclaimer">Optional disclaimer text…</p>
-</section>
-```
-The `id="ref-N"` values must match the `#ref-N` anchors used in the body.
-
-**CTA** — always end every post (after References) with the shared CTA placeholder; do not author
-the block — `components.js` injects it:
-```html
-<!-- ── CTA (shared, injected by components.js) ── -->
-<div id="site-post-cta"></div>
-```
-
-### 4. Register the post on the listing (`blogs/index.html`)
-Newest post goes on top.
-
-- **If `featured: true`** — replace the existing `<a class="featured reveal">` block: update its
-  `href` to `posts/<slug>.html`, the `tag`, the `meta` (`Featured · {read_time}`), the `<h2>`
-  title, and the `<p>` excerpt. (Keep or swap the SVG illustration in `.featured-visual`.)
-- **Otherwise** — add a linked card at the front of `.posts-grid`:
+### 2. Add it to the listing (`blogs/index.html`)
+Newest first. Link to `posts.html?post=<slug>`.
+- **If `featured: true`** — update the `<a class="featured reveal" href="posts.html?post=<slug>">`
+  block: `tag`, `meta` (`Featured · {read_time}`), `<h2>` title, `<p>` excerpt (and the SVG art).
+- **Otherwise** — add a card at the front of `.posts-grid`:
   ```html
-  <a href="posts/<slug>.html" class="post-card linked reveal">
+  <a href="posts.html?post=<slug>" class="post-card linked reveal">
     <div class="tag-row"><span class="tag blue">Tag</span><span class="meta">{read_time}</span></div>
     <h3>Post title</h3>
     <p>Excerpt.</p>
     <div class="card-foot">Read the article →</div>
   </a>
   ```
-  The `linked` class enables the hover lift; placeholder cards use `class="post-card soon"` and a
-  `<div class="card-foot">In the works</div>` with no `href`.
+  (Placeholder/"coming soon" cards use `class="post-card soon"` with a `card-foot` and no `href`.)
 
-### 5. Mirror the newest post on the homepage
-In `index.html`, the `#blog` section's `.blog-grid` shows the three newest posts. Update the first
-`<a class="blog-card">` to point at `blogs/posts/<slug>.html` with the new tag/date/title, and shift
-the others down. "View all →" already points to `blogs/index.html`.
+### 3. Mirror the newest post on the homepage (`index.html`)
+The `#blog` section's `.blog-grid` shows the three newest posts. Point the first
+`<a class="blog-card" href="blogs/posts.html?post=<slug>">` at the new post (tag/date/title) and
+shift the others down. "View all →" already points to `blogs/index.html`.
 
-### 6. Verify locally
-From the repo root: `python3 -m http.server 8000`, then open:
-- `http://localhost:8000/blogs/` — the post appears and links correctly.
-- `http://localhost:8000/blogs/posts/<slug>.html` — renders with styling; "← Back to Blog",
-  logo, nav, and footer links all resolve; no broken `cdn-cgi` links.
-- `http://localhost:8000/` — homepage "Blog" nav/section/footer point to `/blogs/`.
+### 4. Verify locally
+From the repo root: `python3 -m http.server 8080`, then open:
+- `http://localhost:8080/blogs/posts.html?post=<slug>` — renders with the post header, body,
+  table, references, and shared nav/footer/CTA; "← Back to Blog" works.
+- `http://localhost:8080/blogs/` and `http://localhost:8080/` — the new card links resolve.
 
 Then commit (only when asked).

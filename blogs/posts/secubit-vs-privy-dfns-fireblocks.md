@@ -1,6 +1,6 @@
 ---
 title: "Secubit vs. Privy vs. Dfns vs. Fireblocks: How Wallet Infrastructure Really Differs"
-date: 2025-05-01
+date: 2026-06-01
 tag: Comparison
 read_time: 8 min read
 author: Secubit Team
