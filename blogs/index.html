@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Secubit</title>
-<link rel="icon" href="../logo_favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css">
-<script src="/components.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Secubit</title>
+  <link rel="icon" href="../logo_favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="/components.js" defer></script>
 </head>
+
 <body>
-<div id="page">
+  <div id="page">
 
-<!-- ── Nav (shared, injected by components.js) ── -->
-<div id="site-nav"></div>
+    <!-- ── Nav (shared, injected by components.js) ── -->
+    <div id="site-nav"></div>
 
-<!-- ── Hero ── -->
-<header class="blog-hero">
-  <div class="label">Insights</div>
-  <h1>The Secubit <span>Blog</span></h1>
-  <p>Hardware-rooted security, MPC, and the architecture of institutional crypto custody — explained by the team building it.</p>
-</header>
+    <!-- ── Hero ── -->
+    <header class="blog-hero">
+      <div class="label">Insights</div>
+      <h1>The Secubit <span>Blog</span></h1>
+      <p>Hardware-rooted security, MPC, and the architecture of institutional crypto custody — explained by the team
+        building it.</p>
+    </header>
 
-<div class="blog-wrap">
+    <div class="blog-wrap">
 
-  <!-- Featured post -->
-  <a href="posts.html?post=secubit-vs-privy-dfns-fireblocks" class="featured reveal">
-    <div class="featured-visual">
-      <svg width="280" height="240" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- four provider chips comparison -->
-        <g font-family="IBM Plex Mono, monospace" font-size="11">
-          <!-- node 1 -->
-          <rect x="24" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1"/>
-          <circle cx="44" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5"/>
-          <text x="58" y="64" fill="#9aa6bd">Privy</text>
-          <text x="38" y="84" fill="#5a6781" font-size="8">cloud TEE</text>
-          <!-- node 2 -->
-          <rect x="152" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1"/>
-          <circle cx="172" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5"/>
-          <text x="186" y="64" fill="#9aa6bd">Dfns</text>
-          <text x="166" y="84" fill="#5a6781" font-size="8">MPC nodes</text>
-          <!-- node 3 -->
-          <rect x="24" y="118" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1"/>
-          <circle cx="44" cy="138" r="6" fill="none" stroke="#6b7894" stroke-width="1.5"/>
-          <text x="58" y="142" fill="#9aa6bd">Fireblocks</text>
-          <text x="38" y="162" fill="#5a6781" font-size="8">SGX enclaves</text>
-          <!-- node 4 — Secubit highlighted -->
-          <rect x="152" y="118" width="104" height="58" rx="10" fill="#0c1426" stroke="#4285F4" stroke-width="1.8"/>
-          <rect x="172" y="132" width="16" height="12" rx="2" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-          <path d="M174.5 132 v-3 a3.5 3.5 0 0 1 7 0 v3" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-          <text x="196" y="142" fill="#7eb0ff">Secubit</text>
-          <text x="166" y="162" fill="#4285F4" font-size="8">inside the HSM</text>
-        </g>
-      </svg>
-    </div>
-    <div class="featured-body">
-      <div class="tag-row">
-        <span class="tag">Comparison</span>
-        <span class="meta">Featured · 8 min read</span>
+      <!-- Featured post -->
+      <a href="posts.html?post=secubit-vs-privy-dfns-fireblocks" class="featured reveal">
+        <div class="featured-visual">
+          <svg width="280" height="240" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- four provider chips comparison -->
+            <g font-family="IBM Plex Mono, monospace" font-size="11">
+              <!-- node 1 -->
+              <rect x="24" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <circle cx="44" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
+              <text x="58" y="64" fill="#9aa6bd">Privy</text>
+              <text x="38" y="84" fill="#5a6781" font-size="8">cloud TEE</text>
+              <!-- node 2 -->
+              <rect x="152" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <circle cx="172" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
+              <text x="186" y="64" fill="#9aa6bd">Dfns</text>
+              <text x="166" y="84" fill="#5a6781" font-size="8">MPC nodes</text>
+              <!-- node 3 -->
+              <rect x="24" y="118" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <circle cx="44" cy="138" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
+              <text x="58" y="142" fill="#9aa6bd">Fireblocks</text>
+              <text x="38" y="162" fill="#5a6781" font-size="8">SGX enclaves</text>
+              <!-- node 4 — Secubit highlighted -->
+              <rect x="152" y="118" width="104" height="58" rx="10" fill="#0c1426" stroke="#4285F4"
+                stroke-width="1.8" />
+              <rect x="172" y="132" width="16" height="12" rx="2" fill="none" stroke="#4285F4" stroke-width="1.5" />
+              <path d="M174.5 132 v-3 a3.5 3.5 0 0 1 7 0 v3" fill="none" stroke="#4285F4" stroke-width="1.5" />
+              <text x="196" y="142" fill="#7eb0ff">Secubit</text>
+              <text x="166" y="162" fill="#4285F4" font-size="8">inside the HSM</text>
+            </g>
+          </svg>
+        </div>
+        <div class="featured-body">
+          <div class="tag-row">
+            <span class="tag">Comparison</span>
+            <span class="meta">Featured · 8 min read</span>
+          </div>
+          <h2>Why Secubit Beats Privy, Dfns, and Fireblocks for Institutional Wallet Security</h2>
+          <p>Wallet infrastructure is often discussed as if every provider does the same thing. They don't. We compare
+            four approaches on the one question that determines security and fit: where do the keys live, and what
+            actually controls a signature?</p>
+          <span class="read-link">Read the article →</span>
+        </div>
+      </a>
+
+      <!-- Other posts -->
+      <div class="posts-grid">
+        <div class="post-card soon reveal">
+          <div class="tag-row"><span class="tag blue">Security</span><span class="meta">Coming soon</span></div>
+          <h3>Why HSM + MPC Is the Gold Standard for Institutional Crypto Custody</h3>
+          <p>How combining hardware security modules with multi-party computation removes single points of failure
+            without sacrificing key sovereignty.</p>
+          <div class="card-foot">In the works</div>
+        </div>
+        <div class="post-card soon reveal" style="transition-delay:.1s">
+          <div class="tag-row"><span class="tag blue">Architecture</span><span class="meta">Coming soon</span></div>
+          <h3>Self-Sovereign Key Management: The Case Against Custodial-Only Solutions</h3>
+          <p>Why every institution deserves the option to retain full key sovereignty — and how a non-custodial HSM+MPC
+            model makes it practical.</p>
+          <div class="card-foot">In the works</div>
+        </div>
+        <div class="post-card soon reveal" style="transition-delay:.2s">
+          <div class="tag-row"><span class="tag blue">Compliance</span><span class="meta">Coming soon</span></div>
+          <h3>FIPS 140-3 Compliance for Blockchain Infrastructure</h3>
+          <p>What the highest federal hardware-security standard means in practice, and why it matters for regulated
+            digital-asset operations.</p>
+          <div class="card-foot">In the works</div>
+        </div>
       </div>
-      <h2>Secubit vs. Privy vs. Dfns vs. Fireblocks: How Wallet Infrastructure Really Differs</h2>
-      <p>Wallet infrastructure is often discussed as if every provider does the same thing. They don't. We compare four approaches on the one question that determines security and fit: where do the keys live, and what actually controls a signature?</p>
-      <span class="read-link">Read the article →</span>
-    </div>
-  </a>
 
-  <!-- Other posts -->
-  <div class="posts-grid">
-    <div class="post-card soon reveal">
-      <div class="tag-row"><span class="tag blue">Security</span><span class="meta">Coming soon</span></div>
-      <h3>Why HSM + MPC Is the Gold Standard for Institutional Crypto Custody</h3>
-      <p>How combining hardware security modules with multi-party computation removes single points of failure without sacrificing key sovereignty.</p>
-      <div class="card-foot">In the works</div>
     </div>
-    <div class="post-card soon reveal" style="transition-delay:.1s">
-      <div class="tag-row"><span class="tag blue">Architecture</span><span class="meta">Coming soon</span></div>
-      <h3>Self-Sovereign Key Management: The Case Against Custodial-Only Solutions</h3>
-      <p>Why every institution deserves the option to retain full key sovereignty — and how a non-custodial HSM+MPC model makes it practical.</p>
-      <div class="card-foot">In the works</div>
-    </div>
-    <div class="post-card soon reveal" style="transition-delay:.2s">
-      <div class="tag-row"><span class="tag blue">Compliance</span><span class="meta">Coming soon</span></div>
-      <h3>FIPS 140-3 Compliance for Blockchain Infrastructure</h3>
-      <p>What the highest federal hardware-security standard means in practice, and why it matters for regulated digital-asset operations.</p>
-      <div class="card-foot">In the works</div>
-    </div>
+
+    <!-- ── Footer (shared, injected by components.js) ── -->
+    <div id="site-footer"></div>
+
   </div>
 
-</div>
-
-<!-- ── Footer (shared, injected by components.js) ── -->
-<div id="site-footer"></div>
-
-</div>
-
 </body>
+
 </html>
