@@ -68,8 +68,6 @@ Privy optimizes for consumer onboarding. Dfns and Fireblocks are strong platform
 
 For an institution that cannot afford a server breach to become a fund loss, that difference isn't a detail — it's the whole point.
 
-**See Secubit in action:** [wallet.secubit.io](https://wallet.secubit.io) · [api.secubit.io](https://api.secubit.io) · [whitepaper.secubit.io](https://whitepaper.secubit.io)
-
 ## References
 
 1. Privy — *Security architecture* (Shamir Secret Sharing, TEE shares, key reconstituted only inside the enclave at signing): https://docs.privy.io/security/wallet-infrastructure/architecture
