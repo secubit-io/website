@@ -1067,6 +1067,20 @@ input[type=range] {
     color: var(--cyan);
 }
 
+.doc-link--disabled {
+    opacity: .55;
+    cursor: default;
+    pointer-events: none;
+}
+
+.doc-link .doc-soon {
+    font-size: 11px;
+    font-family: var(--mono);
+    font-weight: 400;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
 .doc-arrow {
     color: var(--blue);
 }
