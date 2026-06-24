@@ -22,6 +22,7 @@
           <a href="${sec('about')}">About</a>
           <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
           <a href="${sec('blog')}">Blog</a>
+          <a href="https://wallet.secubit.io/" target="_blank">Wallet</a>
         </div>
         <a href="${sec('cta')}" class="btn">Join Waitlist</a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
