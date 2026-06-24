@@ -13,7 +13,7 @@
 
   const navHTML = `
     <nav>
-      <a href="/" aria-label="Secubit home"><img src="/logo.svg" alt="Secubit" class="nav-logo"></a>
+      <a href="/" aria-label="Secubit home" class="nav-brand"><img src="/logo.svg" alt="Secubit" class="nav-logo"></a>
       <div class="nav-right">
         <div class="nav-links" id="nav-links">
           <a href="${sec('features')}">Features</a>

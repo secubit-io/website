@@ -979,8 +979,21 @@ input[type=range] {
         padding: 0 24px;
     }
 
+    /* Mobile bar: hamburger left · icon center · button right */
     .nav-toggle {
         display: flex;
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-brand {
+        display: none;
+    }
+
+    .nav-right {
+        margin-left: auto;
     }
 
     .nav-links {
