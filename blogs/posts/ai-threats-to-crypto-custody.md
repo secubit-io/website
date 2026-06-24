@@ -74,10 +74,10 @@ featured: true
       <line x1="144" y1="64" x2="144" y2="71" stroke="#e5484d" stroke-width="1.2" />
       <!-- hardware root at the core -->
       <rect x="32" y="168" width="216" height="30" rx="5" fill="#0c1426" stroke="#4285F4" stroke-width="1.8" />
-      <text x="140" y="183" fill="#4285F4" font-size="14" text-anchor="middle" dominant-baseline="central">HSM root</text>
+      <text x="140" y="183" fill="#4285F4" font-size="14" text-anchor="middle" dominant-baseline="central">HSM</text>
     </g>
   </svg>
-  <figcaption style="margin-top:18px;color:#8a96ad;font-size:14px;line-height:1.5;">AI now scans every software layer — cloud host, kernel, SGX enclave, MPC shares — at machine speed. Secubit anchors trust in the one layer it can't read its way into: the HSM.</figcaption>
+  <figcaption style="margin-top:18px;color:#8a96ad;font-size:14px;line-height:1.5;">AI now scans every software layer — cloud host, kernel, SGX enclave, MPC shares — at machine speed. Secubit anchors trust in the one layer it can't reach to: the HSM.</figcaption>
 </figure>
 
 For most of crypto's history, custody systems were protected less by any single unbreakable layer than by the **sheer complexity of getting through all of them.** Reaching the core of an MPC wallet — the signing nodes, often running inside SGX enclaves on cloud hosts — meant chaining together several hard exploits in sequence: a memory bug here, a side channel there, a protocol flaw somewhere deep in the stack, each requiring rare expertise and weeks or months of patient work. The funds behind those layers were always worth attacking. What kept attackers out was that penetrating every layer in the right order to reach the core was genuinely hard — a feat reserved for a handful of nation-state-grade teams.
