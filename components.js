@@ -14,14 +14,19 @@
   const navHTML = `
     <nav>
       <a href="/" aria-label="Secubit home"><img src="/logo.svg" alt="Secubit" class="nav-logo"></a>
-      <div class="nav-links">
-        <a href="${sec('features')}">Features</a>
-        <a href="${sec('architecture')}">Architecture</a>
-        <a href="${sec('api')}">API</a>
-        <a href="${sec('about')}">About</a>
-        <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
-        <a href="${sec('blog')}">Blog</a>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links">
+          <a href="${sec('features')}">Features</a>
+          <a href="${sec('architecture')}">Architecture</a>
+          <a href="${sec('api')}">API</a>
+          <a href="${sec('about')}">About</a>
+          <a href="https://whitepaper.secubit.io/" target="_blank">Whitepaper</a>
+          <a href="${sec('blog')}">Blog</a>
+        </div>
         <a href="${sec('cta')}" class="btn">Join Waitlist</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>`;
 
@@ -64,6 +69,20 @@
       const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    }
+
+    /* Mobile hamburger menu */
+    const toggle = nav && nav.querySelector('.nav-toggle');
+    const links = nav && nav.querySelector('.nav-links');
+    if (toggle && links) {
+      const setOpen = (open) => {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      toggle.addEventListener('click', () => setOpen(!nav.classList.contains('nav-open')));
+      // Close the menu after tapping a link.
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
     }
 
     /* Scroll reveal (shared by every page) */

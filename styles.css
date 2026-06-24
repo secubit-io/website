@@ -124,7 +124,8 @@ nav {
     transition: background .3s, border-color .3s, backdrop-filter .3s;
 }
 
-nav.scrolled {
+nav.scrolled,
+nav.nav-open {
     background: rgba(7, 9, 15, .92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 255, 255, .06);
@@ -134,10 +135,53 @@ nav.scrolled {
     height: 48px;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
     gap: 32px;
+}
+
+/* Hamburger toggle — hidden on desktop, shown via the mobile media query */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+}
+
+nav.nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+nav.nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+nav.nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .nav-links a:not(.btn) {
@@ -935,8 +979,46 @@ input[type=range] {
         padding: 0 24px;
     }
 
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 24px 20px;
+        background: rgba(7, 9, 15, .98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        transform: translateY(-12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform .25s, opacity .25s, visibility .25s;
+    }
+
+    nav.nav-open .nav-links {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
     .nav-links a:not(.btn) {
-        display: none;
+        padding: 14px 0;
+        font-size: 17px;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .nav-links a:not(.btn):last-child {
+        border-bottom: none;
+    }
+
+    .nav-right {
+        gap: 14px;
     }
 
     #features,
