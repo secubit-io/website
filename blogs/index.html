@@ -31,51 +31,52 @@
     <div class="blog-wrap">
 
       <!-- Featured post -->
-      <a href="posts.html?post=secubit-vs-privy-dfns-fireblocks" class="featured reveal">
+      <a href="posts.html?post=ai-threats-to-crypto-custody" class="featured reveal">
         <div class="featured-visual">
           <svg width="280" height="240" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- four provider chips comparison -->
-            <g font-family="IBM Plex Mono, monospace" font-size="11">
-              <!-- node 1 -->
-              <rect x="24" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
-              <circle cx="44" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
-              <text x="58" y="64" fill="#9aa6bd">Privy</text>
-              <text x="38" y="84" fill="#5a6781" font-size="8">cloud TEE</text>
-              <!-- node 2 -->
-              <rect x="152" y="40" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
-              <circle cx="172" cy="60" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
-              <text x="186" y="64" fill="#9aa6bd">Dfns</text>
-              <text x="166" y="84" fill="#5a6781" font-size="8">MPC nodes</text>
-              <!-- node 3 -->
-              <rect x="24" y="118" width="104" height="58" rx="10" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
-              <circle cx="44" cy="138" r="6" fill="none" stroke="#6b7894" stroke-width="1.5" />
-              <text x="58" y="142" fill="#9aa6bd">Fireblocks</text>
-              <text x="38" y="162" fill="#5a6781" font-size="8">SGX enclaves</text>
-              <!-- node 4 — Secubit highlighted -->
-              <rect x="152" y="118" width="104" height="58" rx="10" fill="#0c1426" stroke="#4285F4"
-                stroke-width="1.8" />
-              <rect x="172" y="132" width="16" height="12" rx="2" fill="none" stroke="#4285F4" stroke-width="1.5" />
-              <path d="M174.5 132 v-3 a3.5 3.5 0 0 1 7 0 v3" fill="none" stroke="#4285F4" stroke-width="1.5" />
-              <text x="196" y="142" fill="#7eb0ff">Secubit</text>
-              <text x="166" y="162" fill="#4285F4" font-size="8">inside the HSM</text>
+            <g font-family="IBM Plex Mono, monospace" font-size="8">
+              <!-- software layers being scanned by AI -->
+              <rect x="40" y="34" width="200" height="22" rx="5" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <text x="52" y="48" fill="#5a6781">cloud host</text>
+              <rect x="58" y="68" width="164" height="22" rx="5" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <text x="70" y="82" fill="#5a6781">SGX enclave</text>
+              <rect x="76" y="102" width="128" height="22" rx="5" fill="#0d1525" stroke="#6b7894" stroke-width="1" />
+              <text x="88" y="116" fill="#5a6781">MPC protocol</text>
+              <!-- AI scan beam -->
+              <line x1="20" y1="30" x2="260" y2="128" stroke="#4285F4" stroke-width="1" stroke-dasharray="3 3"
+                opacity="0.7" />
+              <text x="18" y="26" fill="#7eb0ff" font-size="9">AI</text>
+              <!-- hardware root at the core -->
+              <rect x="94" y="142" width="92" height="62" rx="10" fill="#0c1426" stroke="#4285F4" stroke-width="1.8" />
+              <rect x="128" y="160" width="24" height="18" rx="3" fill="none" stroke="#4285F4" stroke-width="1.8" />
+              <path d="M132 160 v-5 a8 8 0 0 1 16 0 v5" fill="none" stroke="#4285F4" stroke-width="1.8" />
+              <text x="112" y="196" fill="#4285F4" font-size="9">HSM root</text>
             </g>
           </svg>
         </div>
         <div class="featured-body">
           <div class="tag-row">
-            <span class="tag">Comparison</span>
-            <span class="meta">Featured · 8 min read</span>
+            <span class="tag">Security</span>
+            <span class="meta">Featured · 10 min read</span>
           </div>
-          <h2>Why Secubit Beats Privy, Dfns, and Fireblocks for Institutional Wallet Security</h2>
-          <p>Wallet infrastructure is often discussed as if every provider does the same thing. They don't. We compare
-            four approaches on the one question that determines security and fit: where do the keys live, and what
-            actually controls a signature?</p>
+          <h2>AI Just Changed the Custody Threat Model — Here's How Secubit Was Built for It</h2>
+          <p>Frontier AI models can now find and exploit software vulnerabilities at a speed and cost that used to
+            protect custody systems by default. Here's why that breaks the old assumptions — and why Secubit anchors
+            trust in hardware, not software.</p>
           <span class="read-link">Read the article →</span>
         </div>
       </a>
 
       <!-- Other posts -->
       <div class="posts-grid">
+        <a href="posts.html?post=secubit-vs-privy-dfns-fireblocks" class="post-card linked reveal">
+          <div class="tag-row"><span class="tag blue">Comparison</span><span class="meta">8 min read</span></div>
+          <h3>Why Secubit Beats Privy, Dfns, and Fireblocks for Institutional Wallet Security</h3>
+          <p>Wallet infrastructure is often discussed as if every provider does the same thing. They don't. We compare
+            four approaches on the one question that determines security and fit: where do the keys live, and what
+            actually controls a signature?</p>
+          <div class="card-foot">Read the article →</div>
+        </a>
         <a href="posts.html?post=why-hsm-mpc-gold-standard" class="post-card linked reveal">
           <div class="tag-row"><span class="tag blue">Security</span><span class="meta">9 min read</span></div>
           <h3>Why HSM + MPC Is the Gold Standard for Institutional Crypto Custody</h3>
