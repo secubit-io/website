@@ -8,6 +8,78 @@ excerpt: "Frontier AI models can now find and exploit software vulnerabilities a
 featured: true
 ---
 
+<figure style="margin:0 0 40px;padding:32px 24px;border:1px solid rgba(66,133,244,.2);border-radius:16px;background:radial-gradient(circle at 30% 25%, rgba(66,133,244,.16), transparent 60%), radial-gradient(circle at 75% 75%, rgba(229,72,77,.12), transparent 55%), #0a0f1e;text-align:center;">
+  <svg viewBox="0 0 280 240" width="360" style="width:100%;max-width:360px;height:auto;display:block;margin:0 auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g font-family="IBM Plex Mono, monospace" font-size="13">
+      <!-- cloud host -->
+      <g transform="translate(0,-15)">
+        <path d="M40 52 a11 11 0 0 1 1 -22 a15 15 0 0 1 29 -3 a10 10 0 0 1 2 25 z" fill="none" stroke="#6b7894" stroke-width="1.6" />
+        <text x="56" y="76" fill="#5a6781" text-anchor="middle">cloud host</text>
+      </g>
+      <!-- SGX enclave = CPU chip -->
+      <g transform="translate(44,52)">
+        <rect x="126" y="30" width="28" height="28" rx="4" fill="none" stroke="#6b7894" stroke-width="1.6" />
+        <rect x="134" y="38" width="12" height="12" rx="2" fill="none" stroke="#6b7894" stroke-width="1.4" />
+        <g stroke="#6b7894" stroke-width="1.4">
+          <line x1="132" y1="24" x2="132" y2="30" />
+          <line x1="140" y1="24" x2="140" y2="30" />
+          <line x1="148" y1="24" x2="148" y2="30" />
+          <line x1="132" y1="58" x2="132" y2="64" />
+          <line x1="140" y1="58" x2="140" y2="64" />
+          <line x1="148" y1="58" x2="148" y2="64" />
+          <line x1="120" y1="36" x2="126" y2="36" />
+          <line x1="120" y1="44" x2="126" y2="44" />
+          <line x1="120" y1="52" x2="126" y2="52" />
+          <line x1="154" y1="36" x2="160" y2="36" />
+          <line x1="154" y1="44" x2="160" y2="44" />
+          <line x1="154" y1="52" x2="160" y2="52" />
+        </g>
+        <text x="140" y="78" fill="#5a6781" text-anchor="middle">SGX enclave</text>
+      </g>
+      <!-- MPC = split key shares -->
+      <g transform="translate(-16,-34)">
+        <circle cx="204" cy="44" r="8" fill="none" stroke="#6b7894" stroke-width="1.6" />
+        <circle cx="204" cy="44" r="3" fill="none" stroke="#6b7894" stroke-width="1.4" />
+        <g stroke="#6b7894" stroke-width="3" stroke-linecap="round">
+          <line x1="213" y1="44" x2="219" y2="44" />
+          <line x1="223" y1="44" x2="229" y2="44" />
+          <line x1="233" y1="44" x2="239" y2="44" />
+        </g>
+        <g stroke="#6b7894" stroke-width="1.6" stroke-linecap="round">
+          <line x1="229" y1="44" x2="229" y2="50" />
+          <line x1="237" y1="44" x2="237" y2="51" />
+        </g>
+        <text x="224" y="76" fill="#5a6781" text-anchor="middle">MPC shares</text>
+      </g>
+      <!-- kernel = terminal window -->
+      <rect x="50" y="80" width="46" height="30" rx="4" fill="none" stroke="#6b7894" stroke-width="1.6" />
+      <line x1="50" y1="88" x2="96" y2="88" stroke="#6b7894" stroke-width="1.2" />
+      <path d="M59 95 l5 4 l-5 4" fill="none" stroke="#6b7894" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      <line x1="68" y1="103" x2="77" y2="103" stroke="#6b7894" stroke-width="1.6" stroke-linecap="round" />
+      <text x="73" y="124" fill="#5a6781" text-anchor="middle">kernel</text>
+      <!-- AI scan crosshair -->
+      <line x1="36" y1="12" x2="244" y2="112" stroke="#e5484d" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
+      <line x1="244" y1="12" x2="36" y2="112" stroke="#e5484d" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
+      <!-- AI = skeleton-like bot head -->
+      <text x="140" y="26" fill="#ff6b6b" font-size="15" font-weight="600" text-anchor="middle">AI</text>
+      <line x1="140" y1="42" x2="140" y2="35" stroke="#e5484d" stroke-width="1.5" />
+      <circle cx="140" cy="33" r="2.4" fill="#e5484d" />
+      <rect x="115" y="52" width="5" height="12" rx="2" fill="#0c1426" stroke="#e5484d" stroke-width="1.4" />
+      <rect x="160" y="52" width="5" height="12" rx="2" fill="#0c1426" stroke="#e5484d" stroke-width="1.4" />
+      <rect x="120" y="42" width="40" height="35" rx="9" fill="#0c1426" stroke="#e5484d" stroke-width="1.8" />
+      <circle cx="131" cy="55" r="4.4" fill="#ff6b6b" />
+      <circle cx="149" cy="55" r="4.4" fill="#ff6b6b" />
+      <rect x="128" y="64" width="24" height="7" rx="1.5" fill="none" stroke="#e5484d" stroke-width="1.4" />
+      <line x1="136" y1="64" x2="136" y2="71" stroke="#e5484d" stroke-width="1.2" />
+      <line x1="144" y1="64" x2="144" y2="71" stroke="#e5484d" stroke-width="1.2" />
+      <!-- hardware root at the core -->
+      <rect x="32" y="168" width="216" height="30" rx="5" fill="#0c1426" stroke="#4285F4" stroke-width="1.8" />
+      <text x="140" y="183" fill="#4285F4" font-size="14" text-anchor="middle" dominant-baseline="central">HSM root</text>
+    </g>
+  </svg>
+  <figcaption style="margin-top:18px;color:#8a96ad;font-size:14px;line-height:1.5;">AI now scans every software layer — cloud host, kernel, SGX enclave, MPC shares — at machine speed. Secubit anchors trust in the one layer it can't read its way into: the HSM.</figcaption>
+</figure>
+
 For most of crypto's history, custody systems were protected less by any single unbreakable layer than by the **sheer complexity of getting through all of them.** Reaching the core of an MPC wallet — the signing nodes, often running inside SGX enclaves on cloud hosts — meant chaining together several hard exploits in sequence: a memory bug here, a side channel there, a protocol flaw somewhere deep in the stack, each requiring rare expertise and weeks or months of patient work. The funds behind those layers were always worth attacking. What kept attackers out was that penetrating every layer in the right order to reach the core was genuinely hard — a feat reserved for a handful of nation-state-grade teams.
 
 That barrier is the one AI just lowered. The complexity of finding and chaining software vulnerabilities — the very thing that made the core hard to reach — is collapsing, and custody, where the money sits one signature away from being gone, is exactly where that collapse will be felt first. This post explains the shift, and why Secubit was architected from day one to put its trust in hardware rather than in any layer of software an AI can read, reason about, and break.
