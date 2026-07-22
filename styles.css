@@ -423,6 +423,89 @@ nav.nav-open .nav-toggle span:nth-child(3) {
     }
 }
 
+/* ── Trade-off ──────────────────────────────────────────────── */
+#tradeoff {
+    padding: 96px 80px;
+    --warn: #ff6b4a;
+}
+
+.label--warn {
+    color: var(--warn);
+}
+
+.section-head h2 span.warn {
+    color: var(--warn);
+}
+
+/* the three "lose" cards reuse .features-grid / .feat-card */
+.lose-grid .feat-card:nth-child(n+1) {
+    border-bottom: none;
+}
+
+.lose-card .feat-icon {
+    color: var(--muted);
+}
+
+.feat-tag--warn {
+    color: var(--warn);
+    background: rgba(255, 107, 74, .08);
+    border-color: rgba(255, 107, 74, .24);
+}
+
+.lose-who {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: rgba(107, 120, 148, .75);
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, .05);
+}
+
+.keep-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.keep-head {
+    margin-top: 88px;
+}
+
+.keep-card {
+    padding: 30px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color .25s, background .25s;
+}
+
+.keep-card:hover {
+    border-color: rgba(66, 133, 244, .35);
+    background: rgba(66, 133, 244, .05);
+}
+
+.keep-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: var(--cyan);
+    margin-bottom: 14px;
+}
+
+.keep-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin-bottom: 10px;
+}
+
+.keep-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
 /* ── Features ───────────────────────────────────────────────── */
 #features {
     padding: 96px 80px;
@@ -1034,6 +1117,7 @@ input[type=range] {
         gap: 14px;
     }
 
+    #tradeoff,
     #features,
     #architecture,
     #api,
@@ -1050,8 +1134,14 @@ input[type=range] {
     }
 
     .features-grid,
-    .blog-grid {
+    .blog-grid,
+    .lose-grid,
+    .keep-grid {
         grid-template-columns: 1fr;
+    }
+
+    .keep-head {
+        margin-top: 64px;
     }
 
     .flow {
